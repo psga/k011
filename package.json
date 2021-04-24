@@ -37,6 +37,9 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "storybook": "gatsby build; NODE_ENV=test start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -c .storybook"
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
+
+
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.5.1",

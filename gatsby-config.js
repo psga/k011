@@ -5,6 +5,8 @@ const config = require(`./site.config`)
 
 module.exports = {
   siteMetadata: config,
+  pathPrefix: "/k011",
+
   plugins: [
     {
       resolve: `gatsby-plugin-manifest`,
