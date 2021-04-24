@@ -20,13 +20,13 @@ const Navbar = ({ siteTitle, latestSlug }) => {
         </div>
         <div className="fr ml-auto">
           <div className="flex flex-row">
-            <Link to="/about" className="no-underline gray hover-white">
+            <Link to="/about" className="no-underline gray f6 hover-white">
               About
             </Link>
-            <p className="white mv0 mh2">|</p>
+            <p className="white mv0 mh2 f6">|</p>
             <Link
               to={latestSlug}
-              className="no-underline gray hover-white"
+              className="no-underline gray hover-white f6"
             >
               Latest Post
             </Link>
