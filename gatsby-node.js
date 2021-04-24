@@ -1,56 +1,51 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.com/docs/node-apis/
- */
+const path = require(`path`)
+const { createFilePath } = require(`gatsby-source-filesystem`)
 
-// You can delete this file if you're not using it
-const path = require('path');
+exports.onCreateNode = ({ node, getNode, actions }) => {
+  const { createNodeField } = actions
 
-exports.createPages = ({ graphql, actions }) => {
-	const { createPage } = actions;
+  if (node.internal.type === `Mdx`) {
+    const slug = createFilePath({ node, getNode, basePath: `src/blog` })
+    createNodeField({
+      node,
+      name: `slug`,
+      value: `/blog${slug}`,
+    })
+  }
+}
 
-	return new Promise((resolve, reject) => {
-		const blogPostTemplate = path.resolve('src/templates/blogPost.js');
-		// Query for markdown nodes to use in creating pages.
-		resolve(
-			graphql(
-				`
-					query {
-						allMarkdownRemark(
-							sort: { order: ASC, fields: [frontmatter___date] }
-						) {
-							edges {
-								node {
-									frontmatter {
-										path
-										title
-										tags
-									}
-								}
-							}
-						}
-					}
-				`
-			).then(result => {
-				const posts = result.data.allMarkdownRemark.edges;
+exports.createPages = async ({ graphql, actions, reporter }) => {
+  const { createPage } = actions
 
-				posts.forEach(({ node }, index) => {
-					const path = node.frontmatter.path;
-					createPage({
-						path,
-						component: blogPostTemplate,
-						context: {
-							pathSlug: path,
-							prev: index === 0 ? null : posts[index - 1].node,
-							next: index === posts.length - 1 ? null : posts[index + 1].node,
+  const result = await graphql(`
+    query {
+      allMdx {
+        edges {
+          node {
+            id
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `)
 
+  if (result.errors) {
+    reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query')
+  }
 
-						}
-					});
-					resolve();
-				});
-			})
-		);
-	});
-};
+  result.data.allMdx.edges.forEach(({ node }) => {
+    createPage({
+      path: node.fields.slug,
+      component: path.resolve(`./src/components/blogpost/Blogpost.jsx`),
+      context: {
+        // Data passed to context is available
+        // in page queries as GraphQL variables.
+        slug: node.fields.slug,
+        id: node.id,
+      },
+    })
+  })
+}
