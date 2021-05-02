@@ -28,12 +28,11 @@ const IndexPage = ({ data: { allMdx, site } }) => {
             return (
               <li className="list mb4 dim" key={id}>
                 <Link to={node.fields.slug} className="no-underline">
-                  <h2 className="f7 fw6 gray mv2 light-blue">
+                  <h2 className="f7 fw6 gray mv2 gray">
                     {node.frontmatter.title}
                   </h2>
-                  <h4 className="f7 fw2 mv1 gray">{node.frontmatter.date}</h4>
+                <p className="f7 mt0 white-30">{node.frontmatter.description}</p>
                 </Link>
-                <p className="f7 mt0 gray">{node.frontmatter.description}</p>
               </li>
             )
           })}

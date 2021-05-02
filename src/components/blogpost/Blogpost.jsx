@@ -16,13 +16,13 @@ export default function BlogPost({ data: { allMdx, mdx, site } }) {
         title={mdx.frontmatter.title}
         description={mdx.frontmatter.description}
       />
-      <div className="relative pa4 bg-black">
+      <div className="relative pa4-m bg-black ph6-l">
         <div>
           <header className="white-80 bg-black pa3">
             <h1 className="f2 lh-title mb0">{mdx.frontmatter.title}</h1>
-            <h5 className="f4 lh-copy mb0 mt1">{mdx.frontmatter.date}</h5>
+            <h5 className="f4 lh-copy mb0 mt1 ">{mdx.frontmatter.date}</h5>
           </header>
-          <article className="white-70 f7 bg-black pa4">
+          <article className="white-70 f7 bg-black pa4 w.90  pa3-m ph4-l">
             <MDXRenderer>{mdx.body}</MDXRenderer>
           </article>
         </div>

@@ -18,8 +18,8 @@ const Navbar = ({ siteTitle, latestSlug }) => {
             {siteTitle}
           </Link>
         </div>
-        <div className="fr ml-auto">
-          <div className="flex flex-row">
+        <div className="fr ml-auto f6">
+          <div className="flex flex-row ">
             <Link to="/about" className="no-underline gray hover-white">
               About
             </Link>
