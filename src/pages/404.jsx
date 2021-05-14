@@ -12,7 +12,7 @@ const NotFoundPage = ({ data: { site, allMdx } }) => (
     latestSlug={allMdx.edges[0].node.fields.slug}
   >
     <SEO title="404: Not found" />
-    <div className="tc f1 f-subheadline-l">
+    <div className="bg_black tc f1 f-subheadline-l">
       <h1>404 NOT FOUND</h1>
       <p>
         <span role="img" aria-label="Sad Face">

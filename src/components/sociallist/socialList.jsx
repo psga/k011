@@ -29,7 +29,7 @@ SocialList.propTypes = {
 }
 
 SocialList.defaultProps = {
-  fill: `#000`,
+  fill: `#FFFFFF`,
   width: `3em`,
 }
 

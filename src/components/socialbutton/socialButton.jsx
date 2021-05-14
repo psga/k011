@@ -26,7 +26,7 @@ SocialButton.propTypes = {
 
 SocialButton.defaultProps = {
   link: "/",
-  fill: "#000",
+  fill: "#FFFFFF",
   width: "3em",
 }
 

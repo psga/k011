@@ -3,7 +3,6 @@ import PropTypes from "prop-types"
 import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
-import HeroBox from "../components/herobox/heroBox"
 
 const IndexPage = ({ data: { allMdx, site } }) => {
   const socialEnums = []
@@ -17,35 +16,31 @@ const IndexPage = ({ data: { allMdx, site } }) => {
   })
 
   return (
+	  <div className="bg-black white">
     <Layout
       title={site.siteMetadata.title}
       latestSlug={allMdx.edges[0].node.fields.slug}
     >
-      <HeroBox
-        siteTitle={site.siteMetadata.title}
-        author={site.siteMetadata.author}
-        links={socialLinks}
-        socialEnums={socialEnums}
-      />
+      
       <hr className="mw5 mv3" />
-      <section className="db center mw5 mw6-l mv4">
-        <ul className="ma0 pa0">
+      <section className="db black center mw5 mw6-l mv4">
+        <ul className=" black ma0 pa0">
           {allMdx.edges.map(({ node }, id) => {
             return (
               <li className="list mb4 dim" key={id}>
                 <Link to={node.fields.slug} className="no-underline">
-                  <h2 className="f3 fw6 mv2 light-red">
+                  <h2 className="f7 fw6 mv2 white-90">
                     {node.frontmatter.title}
                   </h2>
-                  <h4 className="f6 fw2 mv1 black">{node.frontmatter.date}</h4>
+                <p className="f7 mt0 white-50">{node.frontmatter.description}</p>
                 </Link>
-                <p className="f5 mt0">{node.frontmatter.description}</p>
               </li>
             )
           })}
         </ul>
       </section>
     </Layout>
+    </div>
   )
 }
 

@@ -5,15 +5,17 @@ const config = require(`./site.config`)
 
 module.exports = {
   siteMetadata: config,
+  pathPrefix: "/k011",
+
   plugins: [
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-math-blog`,
-        short_name: `math-blog`,
+        name: `k011`,
+        short_name: `k011`,
         start_url: `/`,
-        background_color: `#FF725C`,
-        theme_color: `#FF725C`,
+        background_color: `#000000`,
+        theme_color: `#000000`,
         display: `standalone`,
         icon: `src/images/icon.png`,
       },
@@ -36,7 +38,7 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `blog`,
+        name: `r`,
         path: `${__dirname}/src/blog/`,
       },
     },
