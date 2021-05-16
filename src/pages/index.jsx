@@ -16,30 +16,31 @@ const IndexPage = ({ data: { allMdx, site } }) => {
   })
 
   return (
+	  <div className="bg-black white">
     <Layout
       title={site.siteMetadata.title}
       latestSlug={allMdx.edges[0].node.fields.slug}
     >
-            <hr className="mw5 mv3 bg-black" />
-	  <div Class="overflow-scroll min-vh-100 bg-black">
-      <section className="db center mw5 mw6-l mv4 ">
-        <ul className="ma0 pa0">
+      
+      <hr className="mw5 mv3" />
+      <section className="db black center mw5 mw6-l mv4">
+        <ul className=" black ma0 pa0">
           {allMdx.edges.map(({ node }, id) => {
             return (
               <li className="list mb4 dim" key={id}>
                 <Link to={node.fields.slug} className="no-underline">
-                  <h2 className="f7 fw6 gray mv2 gray">
+                  <h2 className="f7 fw6 mv2 white-90">
                     {node.frontmatter.title}
                   </h2>
-                <p className="f7 mt0 white-30">{node.frontmatter.description}</p>
+                <p className="f7 mt0 white-50">{node.frontmatter.description}</p>
                 </Link>
               </li>
             )
           })}
         </ul>
       </section>
-	</div >
     </Layout>
+    </div>
   )
 }
 

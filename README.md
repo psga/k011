@@ -4,7 +4,6 @@
   </a>
 </p>
 <h1 align="center">
-  @kunalja's math blog starter
 </h1>
 
 [![GitHub issues](https://img.shields.io/github/issues/kunalja/gatsby-starter-math-blog?style=for-the-badge)](https://www.github.com/kunalja/gatsby-starter-math-blog/issues)

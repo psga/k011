@@ -10,7 +10,7 @@ const Counter = () => {
       <button
         type="button"
         onClick={handleClick}
-        className="f3 link ph3 pv2 mb2 dib"
+        className="f6 link ph3 pv2 mb2 dib"
       >
         Count: {count}
       </button>

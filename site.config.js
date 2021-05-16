@@ -1,13 +1,13 @@
 module.exports = {
-  title: `k011`,
-  description: `blog k011`,
+  title: `K011`,
+  description: `0`,
   author: `@psga`,
-  personalDescription: `I am a student at the Unal`,
+  personalDescription: `r`,
 
   socialLinks: {
     facebook: 0,
     gatsby: 0,
-    github: `https://github.com/psga/`,
+    github: `https://github.com/psga`,
     imdb: 0,
     linkedin: 0,
     reddit: 0,
