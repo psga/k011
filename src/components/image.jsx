@@ -29,7 +29,7 @@ const useFluidImage = () => {
         ...FluidImage
       }
 
-      moscow: file(relativePath: { eq: "pixabay_moscow.jpg" }) {
+      F1B1: file(relativePath: { eq: "F1B1.png" }) {
         ...FluidImage
       }
     }
@@ -54,7 +54,7 @@ const Image = ({ particularImage, className, alt }) => {
     case "hero2":
       fluid = images.hero2.childImageSharp.fluid
       break
-    case "moscow":
+    case "F1B1":
       fluid = images.moscow.childImageSharp.fluid
       break
     default:

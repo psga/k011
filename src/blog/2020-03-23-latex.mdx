@@ -1,9 +1,39 @@
 ---
-title: Latex and Code Examples
-date: "2020-03-23"
-description: "How to use latex and code in your blog posts."
+title: DLTs and blockchain 
+date: "2021-05-26"
+description: "Distributed ledger technology "
 ---
+# DLTs
+Distributed ledger technology is the way to call a database that is stored in different locations. This is done because unlike a centralized system it is difficult for data to be deleted.
 
+dlt's are differentiated by the data structure, and the distribution of data storage they handle.
+
+The first DLT was blockchain, however there are several DLTs such as tempo and DAG (directed acyclic graphs)
+<center>
+<img src="https://imgur.com/7PnolCk.png" ></img>
+</center>
+blockchain being a distributed technology everyone can be part of it, any transaction that is made is stored in the distributed public record book which remains in several nodes, so it is said that blockchain is impossible to hack because to hack it you need to hack all the nodes that are spread around the world.
+
+for example any change or any attack on any node will remain the change in the record of that node and that record will be different from the others so it will be easy to notice and correct it. as the distributed public ledger will be taken real if it is equal to the one in the largest number of nodes. 
+Blockchain is a technology and DLTs is a set of technologies
+
+
+blockchain can be used in several ways 
+## Currency
+<img src="https://imgur.com/ujhGvPd.png" height="200px" align="left">
+</img>
+Blockchain can be used in several ways, one of them are cryptocurrencies that are intended as a currency to replace money. They can be used to exchange goods.
+In a cryptocurrency there is no entity that regulates the value of the currency as the registration of transactions, as there is with legal money.
+In a cryptocurrency, security and, so to speak, privacy are paramount. Security, since all transactions are in a public registry but with private addresses (i.e. all transactions are public but it is very difficult to know from whom they come or to whom they are directed).
+
+**Bitcoin (BTC)**
+Bitcoin was created by Satoshi Nakamoto in 2009. To this day it remains a mystery who Satoshi is.
+
+**Binance Coin (BNB)**
+BNB is the cryptocurrency on which the Binance ecosystem is built. Being one of the most famous utility tokens worldwide
+
+** Litecoin (LTC)**
+Litecoin is practically the same as bitcoin in its technical aspect. It was intended to be an alternative to bitcoin for low-value transfers, and each litecoin is divided into 100,000,000 smaller units, defined by eight decimal places.
 This blog supports some simple code syntax highlighting and the usage of $ \LaTeX $.
 
 Be weary, Katex, the library used to display Latex, will crash your development environment if it encounters a symbol it is unfamiliar with. Be sure to test your posts on the development environment before publishing the site to a production server.
@@ -33,53 +63,3 @@ $$
   n_1&l_1\end{array}\right|^2}}
 $$
 
-
-<div className="mt5"/>
-
-# Code Examples
-
-### Program in c++ to get the quotient and remainder of a pair of numbers.
-
-```cpp
-#include <iostream>
-using namespace std;
-
-int main()
-{
-  int divisor, dividend, quotient, remainder;
-
-  cout << "Enter dividend: ";
-  cin >> dividend;
-
-  cout << "Enter divisor: ";
-  cin >> divisor;
-
-  quotient = dividend / divisor;
-  remainder = dividend % divisor;
-
-  cout << "Quotient = " << quotient << endl;
-  cout << "Remainder = " << remainder;
-
-  return 0;
-}
-```
-
-<div className="mt4"/>
-
-### Program in python using the Sieve of Eratosthenes to count primes
-
-```python
-def countPrimes_sieve_of_eratosthenes(self, n: int) -> int:
-  if n < 2:
-      return 0
-
-  marked = set()
-  seive = [i for i in range(1, n)]
-  skip = 2
-  while skip * skip < n:
-      if skip not in marked:
-          marked.update(seive[2 * skip - 1 :: skip])
-      skip += 1
-
-  return len(seive) - len(marked) - 1
-```
