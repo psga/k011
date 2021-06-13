@@ -1,0 +1,110 @@
+---
+title: Composition of functions 
+date: "2021-06-14"
+description: "composition, laws of composition and equipotence"
+---
+## Composition
+Suppose we have 
+
+$$
+ A \xrightarrow {f} B \xrightarrow {g} C
+$$
+
+two functions, so that the codomain of $f$ coincides with the domain of $g$. It is then possible to define a composite function $g \circ f $ such that for all $ a \in A$ $ (g \circ f)(a)=g(f(a))$.That is, as a set of pairs $g \circ f \subseteq A \times C is: $
+
+$$
+g \circ f = {(a,c) \in A \times C \; | \; \exist _{b \in B} ((a,b) \in f \land (b,c) \in g)} 
+$$
+
+An elementary, and important ,property of composition is the associative property. If we have:
+
+$$
+
+ A \xrightarrow {f} B \xrightarrow {g} C \xrightarrow {g} D
+$$
+
+Then, for all $a \in A$ we have:
+
+$$
+(h \circ g) \circ f)(a) = (h \circ g)(f(a))= h(g(f(a))= h \circ (g \circ f)(a)
+$$
+and therefore $ (h \circ g) \circ f = h \circ (g \circ f)$
+
+
+In every set $A$ there is a special function ld$_{A}$ that we call the identify in A. This function is the epitome of the non-action, it leaves everything as it was found.for every element $a \in A$ we have ld$_{A}$. Two fundamental properties of the identify are:
+
+- $f \circ$ __ld__$_A=f$ for any function f with domain $A$
+
+
+- __ld__$_A \circ f = f$ for any function f with domain $A$
+
+## Inverse function
+With $f : A \to B$ we can conclude that: 
+
+- An inverse of f from the right is a function g such that $f \circ g =$ __ld__$_{B}$
+
+- An inverse of f from the left is a function h such that $h \circ f =$ __ld__$_{A}$
+
+the only inverse function, on either side, of a bijective function f is called the inverse of f and is denoted by $f^{-1}$
+
+when we have partial functions 
+
+$$
+f: A \dashrightarrow B, \;\;\; g: B \dashrightarrow C
+$$
+then it is also possible to perform the composition, but note that the domain $g \circ f$ may be smaller than the domain $f$. In general, we have :
+$$
+dom(g \circ f) = \{ x \in dom(f) \; | \; f(x)\in dom(g) \} =f^{*}(dom(g))
+$$
+Sometimes, if the range of f and the domain of g are disjoint, the composition has by domain $\varnothing$ and is the empty function
+Recall that an injective function $f: A \to B$ can always be seen as a bijective function if we reduce its codimension to ran(f). Por tanto cualquier funcion inyectiva f: A \to B admits a partial inverse
+$$
+f^{-1}:ran(f)\to A
+$$
+in such a way that:
+$$
+f^{-1} \circ f = \text{ld}_{A},\;\;\;\; f \circ f^{-1}= \text{ld}_{ran(f)}
+$$
+
+## Laws of internal composition, semigrouping, groups
+
+let M be a set. An operation or law of internal composition on M is a function:
+
+$$
+\star : M \times M \to M
+$$
+it is usual to represent symbolically the law of internal composition using a connective. That is, instead of writing $\star (m,n)$ we can write $m \star n$
+
+
+An example is when $M$ is a finite set, then an operation can be expressed by a table. by means of a table, For example, suppose $M= \{ a,b,c\}$. The following table:
+<center><table style="border:1px solid white">
+<tr>
+    <th style="border:1px solid white">⋆</th>
+    <th style="border:1px solid white">a</th>
+    <th style="border:1px solid white">b</th>
+    <th style="border:1px solid white">c</th>
+</tr>
+<tr>
+    <th style="border:1px solid white">a</th>
+    <td style="border:1px solid white">a</td>
+    <td style="border:1px solid white">b</td>
+    <td style="border:1px solid white">c</td>
+</tr>
+<tr>
+    <th style="border:1px solid white">b</th>
+    <td style="border:1px solid white">b</td>
+    <td style="border:1px solid white">c</td>
+    <td style="border:1px solid white">b</td>
+</tr>
+<tr>
+    <th style="border:1px solid white">c</th>
+    <td style="border:1px solid white">c</td>
+    <td style="border:1px solid white">a</td>
+    <td style="border:1px solid white">b</td>
+</tr>
+</table>
+</center>
+
+It encodes the value of $x\star y$,which we find if we look in the row corresponding to element x and the row corresponding to element y. x and the row corresponding to element y.
+
+We already know a whole series of operations on different sets, for example, addition, multiplication of integers, rational or real numbers. Multiplication of integers, rational or real numbers. Logic connectives can also be understood as operations on the set of well-formed formulas
