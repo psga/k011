@@ -108,3 +108,94 @@ An example is when $M$ is a finite set, then an operation can be expressed by a 
 It encodes the value of $x\star y$,which we find if we look in the row corresponding to element x and the row corresponding to element y. x and the row corresponding to element y.
 
 We already know a whole series of operations on different sets, for example, addition, multiplication of integers, rational or real numbers. Multiplication of integers, rational or real numbers. Logic connectives can also be understood as operations on the set of well-formed formulas
+
+We should know that 
+- We say that the operation $\star$ on the set M is associative if for any elements a, b and c of M are satisfied:
+$$
+(a \star b) \star c = a \star (b \star c)
+$$
+
+
+- An semigroup is a set M endowed with an associative operation \star. Formally, the semigroup is usually referred to as M, and to over-understand the operation $\star$
+
+
+- Let ($M , \star $) be a semigroup. We say that $e \in M$ is a neutral element if verifies that for all $x \in M$ :
+
+$$
+x \star e = e \star x = x
+$$
+
+
+
+- We say that two elements m and n of a monoid M are inverses of each other if  $m \star n = e$, the neutral element.
+
+- We say that two elements m and n of a moinoid M are inverses of each other if $m \star n = n \star m=  e$, the neutral element of M. In such a case we say that m and n are invertible.
+
+- We say that a semigroup ($M, \star$) is commutative if for any pair m, n of elements of M one has, for any pair m, n of elements of M one has,
+$$
+m \star  n\star =n \star m
+$$
+
+
+given the above definitions, we can conclude several interesting facts 
+
+__If a semigroup has a neutral element, it is unique.__
+
+_Proof_. Suppose that e and u are two neutral elements of the semigroup M. Then $e \star u = e$, since  $e$ is a neutral element. Moreover $e \star u = u$, because u is a neutral element. That is, 
+
+$$
+e=e\star u= e
+$$ 
+and therefore all the neutral elements that could be in M are equal to each other
+
+
+__if m is invertible, its inverse is unique__
+_Proof_. Let $n_{1}$ and $n_{2}$ be two inverses of m. We have then,
+$$
+m \star n_{1} = e= m \star n_{2}
+$$
+Operating on the elements of this identity with n1 from the left, we obtain:
+$$
+(n_{1} \star m) \star n_{1} = (n_{1} \star m) \star n_{2}
+$$
+and from there,
+$$
+n_{1}=n_{2}
+$$
+
+Given any monoid ($M , \star$), we can always find a group within it as follows. The set of its invertible elements is nonempty, since it always has at least one identity element.The subset ($M, \star$), endowed with the operation $\star$ restricted to $M\star$, is a group. Which we call the unit group of $M$
+
+Another thing is that given any monoid ($M,\star$), we can always find a group within it as follows. as follows. The set of its invertible elements is noneempty, since it always has at leat the identify element.iThe subset $M\star$, endowed with the operation $\star$ restricted to $M\star$ is a group, wich we call the unit group of $M$. 
+
+The concept of invertible element in a monoid is precisely a generalization of the concept of invertible function. A function $f: X\to X$ is an invertible element of the monoid $F(X,x) if and only if it is an invertible function, if only if is a bijective function. The inverse element of f is nothing else than the inverse function.
+
+the set Biy$(X)$ of all invertible functions of X on X is then the unit group of F(X,X). units of F(X,X). If X has at least 3 elements, Biy(X) is a noncommutative group
+
+### Morphism
+A morphism between $(M,\star)$ and $(N,\cdot)$  is a function,
+$$
+\varphi :  M \to N
+$$
+wich has the property that for any $m$ and $m'$ elements of M, one has:
+
+$$
+\varphi (m\star n)=  \varphi (m) \cdot \varphi (n)  
+$$
+if in addition $\varphi$ is bijective we say that M is an isomorphism
+
+Depending on wheter the structures in question are semigroups, monoids or groups, we can speak of semigroup, monoid or group morphisms. Morphisms of semigroupsm, monoids or groups
+
+
+#### Carley theorem
+_Let G be a group. Then G is isomorphic to a semigroup of_ Biy _(G)._
+
+_Proof_ Let's define a morphism:
+$$
+L:G \to \text{Biy}(G)
+$$
+as follows: for any g and h of G,$ L(g)(h)= g \star h $ isuffices now to prove that this morphism is injective
+
+
+Since the elements of Biy(X) are functions of X in X, the subgroups of Biy(X) are called groups of transformations. of X in X, the subgroups of Biy(X) are called groups of transformations. In a sense, we can say that the groups of transformations are concrete manifestations of the notation of group abstactness.Cayley's theorem tells us that every group is isomorphic to a group of transformations. It also tells us that every finite group with n different elements, is isomorphic to a subgroup of the symmetric group of n letters.
+
+## Set equipotence 
