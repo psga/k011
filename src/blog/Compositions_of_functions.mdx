@@ -199,3 +199,72 @@ as follows: for any g and h of G,$ L(g)(h)= g \star h $ isuffices now to prove t
 Since the elements of Biy(X) are functions of X in X, the subgroups of Biy(X) are called groups of transformations. of X in X, the subgroups of Biy(X) are called groups of transformations. In a sense, we can say that the groups of transformations are concrete manifestations of the notation of group abstactness.Cayley's theorem tells us that every group is isomorphic to a group of transformations. It also tells us that every finite group with n different elements, is isomorphic to a subgroup of the symmetric group of n letters.
 
 ## Set equipotence 
+We say that $A$ and $B$ are equipotent if there exists a bijective function between $A$ and $B$.
+A and B. We write in that case $|A| = |B|$.
+
+It is clear that if $A$ and $B$ are finite, then they are equipotent if and only if they have the same number of elements. In general, another way to express that $A$ and $B$ are equipotent is by the phrase $A$ and $B$ have the same cardinal.
+
+Similarly, we know that $A$ is minuspotent to $B$ if there exists an injective function of $A$ on $B$, in which case we write $|A| ≤ |B|$. If in addition $A$ and $B$ are not equipotent, we write   $|A| < |B|$.
+
+Another way of expressing that $A$ is minuspotent to $B$ are equipotent is by the phrase $A$ has cardinal less than or equal to $B$. Again, this phrase will make sense later, until we have accepted the principle of good order we will not be able to show that all sets are comparable to each other, that is, that given two sets $A$ and $B$ then one of them must have cardinality less than or equal to $B$.
+
+if $A$ is not empty and there is an injective function f: $f: A \to B$ then there is an overjective funcion $g:A \to A$ and we can prove this as follows:
+
+If A is not empty then we can choose an element $a \in A$. We define then:
+
+$$
+f(x)= \left\{ \begin{array}{lcc}  
+f^{-1}(x) & si & x \in ran(f) \\  
+\\ a & si & x \notin ran(f)
+\end{array}  
+\right.
+$$
+
+thus g is overjective and with that we can see the Cantor-Schr theorem ̈oder-Bernstein:
+
+__Theorem__.  _Suppose that there are injective functions $f:A\to B$ and $g: B\to A$. Then there is a bijective function: $F: A\to B$_
+
+_Proof_ .
+We consider the inverse functions $f^{-1} : f(A) \xrightarrow{\sim} B$ y $g^{-1} : g(B) \xrightarrow{\sim} A$ 
+For each element $a \in A$ we define a finite or infinite sequence $a_{0},a_{1},a_{2},a_{3},...$ of elements alternating A and B as follows 
+
+- Elements to wich corresponds a sequence that never ends
+
+- Elements that generate a finite sequence with an odd number of terms that terminates in an element A that does not belong to g(B)
+
+- Elements that generate a finite sequence with an even number of terms that terminates in an element of B that does not belong to g(B)
+
+It is clear that these three possibilities are mutually exclusive. We call $A'$ the subset of the elements of a that verify condition (c) above. Let us first note that $A' \sube g(B)$ since if the sequence starting with a terminates in an element of B then it is because it was at least possible to take the first step. This allow us to define by a function $F: A \to B$ by means of the formula
+$$
+F(x)= \left\{ \begin{array}{lcc}  
+g^{-1}(x) & si & x \in A' \\  
+\\ f(x) & si & x \notin A'
+\end{array}  
+\right.
+$$
+Let us see that F is overjective. Consider any element $b \in B$. There are two possibles cases, $b \notin f(A)$ or $b \in f(A)$. Let us consider the first case. If $b \notin f(A)$ the sequence corresponding to the elemnt $g(b)\in A$ has only two termins:
+
+$$
+g(b),b
+$$
+
+since it is no longer possible to apply $f^{-1}$ to b.This implies that $g(b) \in A'$ and in that case $F(g(b))=g^{-1}(g(b))=b$. Let us consider the second case $b \in f(A)$. examine now the element $g(b) \in A$, the sequence that corresponds to it has three terms, and may eventually be infinite 
+$$
+g(b),b,f^{-1}(b), ...
+$$
+Again there are two possibilities, $g(b)\in A'$ (which corresponds to a finite sequence ending in B) and $g(b) \notin A'$. in the first case, we have f(g(b))=b. In the second case, $g(b) \notin A'$ let us note that the sequence corresponding to $f^{-1} (b)$ is the same as that of g(b), but without the first two terms. Therefore, in that case we also have $f^{-1}(b) \notin A'$ and $F(f^{-1}(b))=b$. In either case we have found an element of a whose image by F is b and we can ensure that F is overjective
+
+Let us see that F is injective. Let a and a' two elements of A having the same image b= F(a)=F(a). There are three mutually exclusive possibilities.
+
+1. a and a are both in the set A'. in that case $g^{-1}(a)=g^{-1}(a')$ and since $g^{-1}$ is a bijection between $g(B)$ and $A$ we have that $a=a'$
+
+2. a and a' are both outside $A'$. in that case $f(a)=f(a')$ and since f is injective we get $a = a$
+
+3. One of them is in $A'$ and the other is outside $A$. Let us see that this case is not possible, and assuming it leads to contradiction. Without loss of generality let us consider $a \notin A'$ and  $a' \in A'$. That means $f(a) = g^{-1}(a')=b$. let us consider the sequence corresponding to the element a. This is,
+$$
+a',b,a,...
+$$
+ That is the sequence of a is the sequence of $a'$  eliminating the first two terms. Since the element $a'$ corresponds to a finite sequence that ends in an element of $B$, the element a, must have the same ocurrence, and therefore $a \in A'$, in contradiction with our hypotesis $a \notin A'$. We have seen then that in the first two cases $a = a'$ and that the third case cannot occur. Therefore F is injective.
+
+Thanks to the Cantor-Schroder-Bernstein theorem, we can compare the size of the conjunctions.
+c conjuncts.
