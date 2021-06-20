@@ -1,17 +1,18 @@
 ---
-title: Cryptography and Cryptos 
+title: Cryptography and Pools 
 date: "2021-07-16"
 description: "Simetry and Asymetry cryptoghy. Tokens "
 ---
-# Cryptography
+# Mining
+## Cryptography
 Cryptography is the set of techniques which are used to hide information. That is to say, to make messages intelligible to unauthorized receivers.
-## Simetry Cryptography 
+### Simetry Cryptography 
 Symmetric cryptography is a method of cryptography in which a key is used to encrypt and decrypt the message.
 This means that the sender and the receiver must have the key and if for some reason a third person obtains the key, they will be able to decrypt the message.
 
 <img src="https://imgur.com/BHECIa8.png"></img>
 
-## Asimetry Cryptography
+### Asimetry Cryptography
 Asymmetric cryptography is also a cryptographic method which solves the third person error in symmetric cryptography, because unlike symmetric cryptography, it uses 2 keys:
 A public key and a private key.
 An example to understand this well is to think of a mailbox (being the mailbox the public key), anyone can send a letter inside the mailbox but no one can see what is inside the mailbox, unless he has the key (private key).
@@ -19,8 +20,53 @@ This is how wallets work
 
 <img src="https://i.imgur.com/reljbWG.png"></img>
 
-## Hash functions
+### Hash functions
 The hash function is a computable function which causes a data, mostly used in strings, to be converted into an infinite range of outputs, usually fixed-length strings.
 These functions can be used in cryptocurrency mining (hash rate) or in private data (such as when a company stores passwords or data).
 
+#Block
+First we must know what a block is:
+A block is a part of blockchain, In which is stored:
+- A a number of valid records or transactions,
+- information about that block,
+- its linkage with the previous block and the next block through the hash of each block ─a unique code that would be like the block's fingerprint.
+So each block has a specific and immovable place within the chain.
+
+A really interesting question would be how do you create a block?
+# Mining
+The name comes from the classic mining. In which a group of people with their equipment go to a mine to find precious metals. In blockchain is similar, a group of people (called miners) must compete to solve a complex mathematical problem which needs a powerful team, the first to solve the mathematical problem will get the reward.
+
+Mining is responsible for maintaining security in the network as miners review transactions and gather the latest transactions created in a pool called a block.
+
+## What are pools
+A pool is a place where miners can work cooperatively to mine cryptocurrency blocks. They were created in order to facilitate the work of mining, i.e. to solve computational problems more effectively.
+
+Mining pools would not be possible if the Bitcoin protocol did not allow this function. First of all, the responsible for this is a function that is integrated in the Bitcoin base client (getwork).
+
+Getwork actually communicates to a group of miners so that together they can mine the same block.
+
+In order to allow several miners to congregate their computational power at one point, it is necessary to have a server that serves as a link. It may sound ironic that a decentralized technology like blockchain depends on a centralized service. And this brings advantages and disadvantages.
+
+One of the advantages is to keep up with block production and allow for smaller gains.
+
+One of the disadvantages is that this depends on a decentralized service and several scams and thefts have been found in these services.
+
+there are many mining Pools today that control a large portion of bitcoin miners.
+- AntPool 
+- BTC.TOP
+- BTC.com
+- F2Pool
+
+## Proof of work 
+The "Proof of work" protocol is the oldest and best known consensus protocol. 
+
+It serves to avoid certain undesired behaviors in a network.
+
+This protocol works on the concept of requesting a job from the client, which is then verified by the network. Normally the requested job consists of performing complex computational operations.
+
+These operations are then verified by the network. Once they are approved, the client is given access to use the network resources. This is to prevent malicious clients from consuming all the resources in an uncontrolled manner. A situation that can end up denying the service provided to the rest of the clients on the network.
+
+An example of this is the famous captcha that is put when one wants to enter a web service. The web puts the captcha for the visitor to solve it and can access the service. This is put with the intention that a person with bad intentions can not generate thousands of records and collapse the web.
+
+There are several systems Pow the oldest (created at the time of Bitcoin by Satoshi nakamoto) is HashCash.
 
