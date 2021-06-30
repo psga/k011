@@ -1,0 +1,180 @@
+---
+title: What is node js? and why use it 
+date: "2021-05-26"
+description: ""
+---
+# What is NODE.JS 
+Node.js is a cross-platform open source environment that runs JavaScript code outside of a browser.
+
+The potential of Node.js is that it allows developers to use JavaScript for server-side development. This provides dynamic web page content before the page is sent to the user's web browser.
+
+Consequently, Node.js unifies web application development around a single programming language, rather than different languages for server-side and client-side scripting.
+### Nodejs pros
+- Single threaded, based on event drivent
+- perfect for building fast and scalable data-intensive apps
+- Companies like netflix uber paypal ebay have started using node in production
+- NPM: huge library of open-source packages available for everyone for free
+- Very active developer community
+### use nodejs
+- API with database behind it
+- Data streaming
+- Real-time chat application
+- server-side web application
+
+# Node console and node scripts
+### Console
+
+in the node console you can run js expressions with some extras and limitations. example of an extra:
+
+```js
+>1+1
+2
+```
+```js
+>_+3
+5
+```
+And some commands that cannot be executed in js
+### script
+At first glance nodejs is the same as js. But it is not, for example, we can call modules like "fs" File system that allows us to modify and create and read system files. And a lot of other modules that we can see in the documentation 
+An example of code is 
+
+```js
+const fs = require('fs');
+const input= fs.readFileSync('input.txt','utf-8');
+console.log(input);
+```
+
+This code is made in the synchronous way. 
+The synchronous way has a flaw, which is code locking.
+And one of the reasons why they created nodejs is to fix this problem.
+
+nodejs code:
+```js
+const fs = require('fs');
+fs.readFile('input.txt','utf-8', (err,data) =>{
+	console.log(data);
+ });
+console.log('Reading file...);
+```
+basically the function runs in the background
+
+Why does it crash, what's wrong with the first code?
+This is known as synchronous execution, because the lines are executed one after the other, in the order in which they were written. However, not all instructions provided to the computer must be applied immediately. For example, if you send a network request, the process of executing your code must wait for the data to be displayed before it can be used. In this case, time would be wasted if no other code was executed while waiting for the network request to complete. To solve this problem, developers use asynchronous programming, whereby lines of code are executed in a different order than the one in which they were written. With asynchronous programming, we can execute other code while waiting for lengthy activities such as network requests to finish.
+
+
+## Asynchronous way:
+- Non-blocking I/O model
+- This is why we use so many callback functions in Node.js
+- Callnacks != Asynchronous
+
+## Callbackhell
+
+
+# Nodejs Modules
+
+## What is a module?
+A module is a unit of code organized in files or directories, which can be easily exported for reuse in other parts of the application.
+There are 3 types of modules of which the only difference is in the origin
+
+### Built-in modules or Core-modules 
+These are the native modules of the Node.js API. These are included with node so it is not necessary to install them.
+There are many of these, for example *fs (filesystem)* which allows interacting with the system files or console (which is not necessary to import) which provides a console similar to the one in js
+In nodejs there are too many modules and all these can be seen from the documentation https://nodejs.org/en/docs/
+
+### Local modules :
+These are the modules written by the developers and form a large part of the application as a whole, which are generally structured in this way in order to be a reusable code.
+
+### External modules:
+ They are, in essence, third party packages distributed through npm (although they can come from other repositories). These packages are installed as dependencies and, although they provide functionality to the application, they should not be included in the repository since they are not part of it.
+
+## Import modules
+For this importing modules one can rely on the require method.
+There are two cases to use require:
+- Built-in or external modules: You only have to pass as argument a string with the name of the module. In the case of built-in they must be installed in the node_modules folder. For node API packages it is not necessary to define it additionally.
+```js
+const fs = require('fs'); // Built-in const lodash = require('lodash');
+```
+- Local modules: A string with the relative path to the module file is passed as argument. If the argument is a directory, by default it will look for a file named index.js in order to import the module. If there is no such file, the module will be imported as undefined.
+```js
+const adso = require('./modules/adso.js');
+```
+
+# NPM
+## What is NPM?
+NPM is a package manager for Javascript, that is, it is used to install and manage versions of packages and js libraries.
+
+NPM has long been the benchmark in terms of javascript package managers, but for some time now it has had a competitor: Yarn. Yarn claims that their js library manager is much faster and more powerful, but since most people use NPM I decided to talk about it.
+##What is NPM for?
+As we have seen NPM is a package manager, that means that you can:
+
+- Download js libraries
+- Update in case of new version the installed libraries
+- Download a specific version of the library
+- Manage dependencies between packages
+
+One of the advantages of npm is that all packages are downloaded from a package repository called npmjs.
+
+NPM uses a special file called package.json in which the libraries and their versions are declared. This is very useful because you can have this file with all the libraries you need so that with a simple command they are all downloaded and you don't have to be looking for them in their respective repositories.
+
+The good thing is that you can upload your own libraries to the repository so that if you update the library and upload it to the repository, with a command inside the project where it is used, it will be updated to the new version.
+
+## How to install and use NPM 
+NPM is built into NodejS, that is, when you download and install nodejs, npm will be installed automatically as npm was made with the intention of being the package and library manager for Nodejs.
+### How to download packages
+```bash
+$npm install
+```
+This is the command you will use most often. As the name suggests, it is used to install packages. The packages will be downloaded and put automatically in a folder called node_modules and most often you add this folder to the .gitignore so that it is not uploaded to the git repository.
+
+npm installs locally in the projects. That is to say, when a module is downloaded, it is added to a local project, which is the one that will have it available to include and will have to reinstall it to other projects if it is used again. Although it must be said that there is also the possibility of installing the packages globally in our system.
+
+## Running npm tasks and commands
+Another typical use is to execute small npm commands in a more comfortable way. If you have used any framework for the frontend, or you have worked with nodejs, you will have already used these commands.
+
+The commands can be defined in the package.json, in the scripts section:
+
+```json
+{
+    "scripts": {
+        "dev": "node lib/server-development",
+        "prod": "node lib/server-production"
+    },
+}
+```
+Just like that, in this case I have created a couple of commands to run in development or in production. To run the commands I simply place myself with the console in the project and run the command I want using:
+
+```bash
+$npm run <command_name>.
+```
+For example:
+```bash
+$npm run dev
+```
+The good thing about this is that you can put inside the commands you define any bash code so it can be useful to automate certain tasks in the frontend without having to resort to gulp or webpack.
+
+### Adding dependencies
+There are two types of dependencies that you can add to package.json:
+dependencies: packages that are required during program execution.
+devDependencies: packages that are used for development and testing.
+One way to add dependencies to your project is to add them to the package.json file directly. For example, if we want to add an execution dependency called slugify and a development dependency called nodemon we can do it as follows:
+```json
+{
+  "name": "my-super-package",
+  "version": "1.0.0",
+  "dependencies": {
+    "slugify": "1.3.4"
+  },
+  "devDependencies". : {
+    "nodemon" : "1.18.11"
+  }
+}
+```
+Although also npm install with the --save or --save-dev option. For example:
+
+```bash
+$npm install slugify --save
+```
+```bash
+$npm install nodemon --save-dev
+```
