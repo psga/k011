@@ -4,7 +4,7 @@ import "katex/dist/katex.min.css"
 import React from "react"
 import { MDXProvider } from "@mdx-js/react"
 import Highlight, { defaultProps } from "prism-react-renderer"
-import theme from "prism-react-renderer/themes/github"
+import theme from "prism-react-renderer/themes/dracula"
 
 /* eslint-disable */
 const component = {
@@ -20,16 +20,16 @@ const component = {
             ? matches.groups.lang
             : ""
         }
-        theme={theme}
+        theme={theme} 
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <pre className={className + " overflow-auto"} style={style}>
+          <pre className={className + " overflow-auto ba b--white-20 br2"} style={style}>
             {tokens.map((line, i) => {
               if (i === tokens.length - 1) {
                 return null
               }
               return (
-                <div {...getLineProps({ line, key: i })}>
+                <div {...getLineProps({ line, key: i })}  className="bg-black  pa2 br2">
                   {line.map((token, key) => {
                     return <span {...getTokenProps({ token, key })} />
                   })}
