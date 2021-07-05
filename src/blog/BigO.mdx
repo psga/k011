@@ -1,0 +1,162 @@
+---
+title: Big O  
+date: "2021-07-16"
+description: "Simetry and Asymetry cryptoghy. Tokens "
+---
+
+# Big O
+First we must know what it is to have a good code.
+
+## Good Code
+
+__A good code is when it is readable__: that is, it is clear and clean and can be easily understood by reading it. When it is not necessary a lot of comments explaining what each thing does.
+
+__A good code is when it is scalable__:and this is where the term Big O notation comes in.
+
+Most problems do not have only one solution. They have several, an infinity of them.
+
+_How do we know which code to use?_
+## General idea
+The general idea is that we compare how fast the execution time of the algorithms grows with respect to the size of its input or the memory it uses. This is what Big O notation is all about. It is written with O and its scalability. For example, if we type an algorithm like this
+#### O(1)
+```python
+def ole(n):
+	print("OLEE")
+```
+As we can see this function does not depend on the size of the input, its execution time is constant. So it is O(1)
+
+or we can also see this other example
+#### O(n)
+```python
+def elemnts(list):
+	for i in list:
+		print(i)	
+```
+
+As we see this function depends on the size of the input, when the list has a size of 2 the condition will be repeated 2 times, when the list has a size of 3 the condition will be repeated 3 times, so it is said to be linear or O(n).
+
+This is the most common big O, y como pueden pensar existen muchos mas aqui una grafica 
+<center><img src="https://i.imgur.com/CNTKnZ3.png" /></center>
+
+## Calculate
+
+The way to find the Big O notation of an algorithm is not difficult, it is just to calculate the bit O notation of each, so to speak, "line". A example:
+```python
+def nitemsandsearchhola(list):
+	nelements=0
+	for element in list:
+		nelements+=1
+		if "hola"==element:
+			print("Hola!")
+	print("there are {} items in the list".format(nelements))		
+```
+
+calculating the big O notation of an algorithm is easy, but it can be interpreted in many ways. Most people calculate this by looking at for example "Each line" and calculating its big O notation independently and adding it up, the strange thing is that for some people some lines are not worth it, for example let's look at this example
+
+Some people may calculate this example like this:
+<img src="https://i.imgur.com/4lyB0rQ.png" />
+
+and others may see it like this:
+
+<img src="https://i.imgur.com/R06Pr6W.png" />
+
+because they think that the other lines are not worth enough (they do not scale).
+
+#### Worst case
+That big-O refers to the worst case of an algorithm, i.e., think of a search algorithm that goes through a list to find a number or a word that we want (i.e., when the word enters it prints that it found it). We know that this is not the best solution (that goes through the whole list), because it can be in the first element of the list, the algorithm will find it and will continue with the cycle going through the whole algorithm. One way to organize this is to break the loop when it finds it.
+One code is more efficient than another, but they have the same BIg-o notation (O(n)) since Big-O notation refers to the worst case.
+- in the best algorithm the cycle can be done 1 time as well as the number of items.
+- in the worst case algorithm the cycle will always repeat the condition the number of times
+
+Let's look at the best algorithm
+We know it is O(n) since O(n) refers to the worst case. But what about the worst case?
+For this there is Big-Omega the algorithm will have Ω(1) since it can be in the first element and will be independent of the number in the list. 
+
+#### Simplify
+To make the calculation of O(n) more general, i.e. to avoid the example of the function nitemsandsearchhola (O(4n+2) and O(n)), the constants are eliminated.
+the O(4n+2) in "4n+2" is eliminated the 2 and the 4 Thus it would be O(n)
+Or if we get an O(n/8+20000) eliminating the constants we would have O(n).
+Or an O(790000) would be O(1)
+
+### more than one entry
+Suppose I have this function:
+``` python
+def lists(a,b):
+	for i in a:
+		print(i)
+	for i in b:
+		print(i)
+```
+when calculating we would be left with O(2n) and simplifying O(n). If it would be right?
+the answer is that not if we see the 2 cycles go through a different list so a correct answer to this would be O(a+b)
+#### Removing the non-dominant 
+Suppose we have O(2n+n^2+5) Simplifying, i.e. removing the constants we would have O(2n+n^2) A question we can ask ourselves is if we can simplify more, the answer to this question is yes, removing those that are not dominant (the dominant being the heaviest), for example in O(2n+n^2) we can remove 2n since n^2 is heavier with this we would be left with O(n^2).
+### O(n^2)
+which algorithms are those that are O(n^2). these are the algorithms that have 2 nested cycles. Why?
+let's see an example 
+``` python
+def li(a):
+	for i in a:
+		for z in a:
+			print(i,"_",z)
+```
+As we can see there are 2 nested cycles. the print will be repeated n times and each of those times will be repeated n times.
+<center>
+(it1+it2+it3+it4+...+itn)+(it1+it2+it3+it4+...+itn)+(it1+it2+it3+it4+...+itn)..
+
+n+n+n+n+n+....
+
+n*n
+
+n^2
+</center>
+what would happen with independent variables? Suppose that in the example of the function lists(a,b) were nested cycles, what is inside the cycle would be repeated a times and that would be repeated b times or the other way around. So it would remain O(a*b)
+
+
+### O(n!)
+in the previous graph showed that the worst O was the n^2, i.e. the O with the fastest scalability.
+But there is one that is worse which is the O(n!) "Oh no" is the one that has one cycle for each item. an example to see this is the recursive algorithm:
+
+``` python
+def fun(n):
+    for s in range(n):
+        fun(n-1)
+```
+
+
+#### Big O 
+We can classify the algorithmic complexity of some algorithms as follows
+
+
+- __O(1)__ _Constant_ This is when there are no loops, i.e. the code runs only once.
+
+- __O(log N)__ _Logarithmic_ usually searching algorithms have log n if they are sorted (an example of this is binary search).
+
+- __O(n)__ _Linear_ for loops, It is when there are cycles that run n elements.
+
+- __O(n log(n))__ _Log Liniear_- usually sorting operations .
+
+- __O(n^2)__ _Quadratic_- every element in a collection needs to be compared to ever other element. 
+
+## A Code Scalable 
+We said that having a good code is when it is scalable but in addition to speed, there is also memory, the best is to keep very little memory usage and a lot of speed, but there are times when you have to have priorities, that is, when you need more speed you make a sacrifice of memory, and there are other times when you need to use less memory so you make a sacrifice in lowering the speed.
+
+### Space complexity
+
+Previously the memory was very limited, but now it is not like that. Computers now have a lot of memory so it made programmers relax about this problem.
+There are some algorithms that require a lot of memory and it is necessary to optimize it.
+
+#### What causes space complexity?
+- Variables
+- Data Structures
+- Function Call
+- Allocation
+in space, 2 things must be taken into account 
+the heap and the stack
+
+#### Heap and stack
+in space complexity 2 things must be taken into account 
+the heap and the stack
+
+
+### Speed Complexity
