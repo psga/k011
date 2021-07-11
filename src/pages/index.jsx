@@ -16,14 +16,15 @@ const IndexPage = ({ data: { allMdx, site } }) => {
   })
 
   return (
-	  <div className="bg-black white">
+	  <div className="bg-black white db" >
     <Layout
       title={site.siteMetadata.title}
       latestSlug={allMdx.edges[0].node.fields.slug}
     >
       
-      <hr className="mw5 mv3" />
-      <section className="db black center mw5 mw6-l mv4">
+      <hr className="mw5 mv3 black" />
+	  <div className="bg-black" >
+      <section className="db bg-black center mw5 mw6-l mv4">
         <ul className=" black ma0 pa0">
           {allMdx.edges.map(({ node }, id) => {
             return (
@@ -39,6 +40,7 @@ const IndexPage = ({ data: { allMdx, site } }) => {
           })}
         </ul>
       </section>
+    </div>
     </Layout>
     </div>
   )

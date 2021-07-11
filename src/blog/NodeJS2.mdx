@@ -1,0 +1,89 @@
+---
+title: Node Works 
+date: "2021-05-26"
+description: "Event loop, threads ..."
+---
+
+for more info https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/
+
+# Node Architecture
+Node depends on a set of libraries which is what makes it node. Some of these are:
+ 
+- http-parser
+- c-ares
+- OpenSSL
+- zlib
+
+but the 2 main libraries are:
+### V8(c++ and js)
+this is the js interpreter and compiler in chrome but it is also node's by definition the one that is in charge of converting the code made in js into a low level code (from js to bytecode and then to machine code).
+
+
+### libuv
+__Unicorn velociraptor library__.
+this library provides many of the things that make node work.some of these functions are access to the computer’s file system, operating system, networking, and more.the most important functionality's are the event loop and thread pool
+
+## Process
+Node.js application run on a single thread.think of the thread as a program(instructions).Since the node is single-threaded, you have to be careful not to block it. So be careful with:
+
+- using sync versions of fs, crypto or zlib module functions within callback functions.
+- performing complex calculations (>O(n^2)).
+- using complex regular expressions (e.g. nested quantifiers).
+
+when a node.js app initializes, modules are imported, the top-level code is executed, and then callbacks are registered. Then, the event loop start.
+The event loop performs all the operations of the application but some of them are too heavy. as for example:
+- file system APIs
+
+- encryption
+
+- DNS lookups
+
+- compresion
+
+In these cases node takes care and offloads the task to a thread pool, 
+
+### Event loop
+
+Any code inside the callback functions is executed inside the event loop. That is to say, this is where all the asynchronous code is executed. 
+When we start our application, the event loop begins executing immediately. Each phase of the event loop has its own callback queue. Some of these phases are more important than others, the most important being
+
+- callbacks of expired timers (e.g., setTimeout()).
+
+- handle I/O polling, i.e., it looks for I/O processes that need to be executed and puts them in the callback queue of the phase. Since I/O encompasses network and file access, about 99% of the code we write is handled by this phase. 
+
+- setImmediate() callbacks, which are special timers that are executed after the I/O polling phase. The final phase (for our purposes) handles shutdown callbacks, for example, when a web server shuts down.
+
+- the process.nextTick() queue and the other microtask queue (which includes promises). These two queues have their own pattern.
+
+If they have anything in their callback queues, they will be executed after the completion of any of the four phases described above.
+When the event loop has gone through all four phases, it needs to check whether to run the loop again or just exit the program. It does this by checking to see if there are any I/O processes or timers running in the background. If there are, the event loop goes back to the beginning and repeats itself.
+the events are emitted.
+the idea of the event loop is that:
+
+- Events are emitted, events are emitted from an asynchronous function such as receiving an HTTP request, the fileSystem module or a timer has finished.
+- Afterwards, the event loop picks them up. The callback functions are executed and as mentioned above, event-loop offloads the heaviest tasks to the thread-pool.
+
+## The event-driven architecture
+Node has objects called event emitters. They emit events when a file is read, when a timer ends, or when a network request is made, among other things. These events are picked up by the event listener that we can configure.an example of this is when we want to create a server.
+```js
+ const server = http.createServer();
+ server.on('request', (req, res) => {
+  console.log('request receved');
+  res.end('request receved');
+ });
+```
+This 'server.on' is actually how we create a listener and it listens for a request.
+ So let's say we have our server running and a new request is made.
+The server acts as a sender and will automatically emit an event called "request" every time a request comes to the server, then the callback function attached to this listener will be called and send some data back to the clients.This is an example of the Observer , where a listener is constantly waiting for an event from a sender. 
+ 
+```js
+const EventEmitter = require('events');
+const myEmitter = new  EventEmitter();
+myEmitter.on('myevent',()=>{       //Observer 1
+        console.log('Oh k0')   
+});
+myEmitter.on('myevent',name=>{       //Observer 1 
+        console.log(`Oh ${name}`)       
+});
+myEmitter.emit('myevent', "Pablo") // object that emits the event
+```
