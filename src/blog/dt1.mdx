@@ -1,0 +1,50 @@
+---
+title: Array Data Structures
+date: "2021-07-26"
+description: "Arrays Data Structures"
+---
+# Array
+An array is a way to store data of the same type or class (integers, characters, Boolean, etc.), although in some languages data of different classes can be stored.
+each element is enumerated with its index. With this you can easily access an array element only with its index.
+the enumeration of these elements within the array starts from 0 in most languages and this implies that it ends at n-1 (where n is the size of the array, the number of elements). For this reason it is said that in programming we start counting from 0.
+The array is probably the simplest and most widely used data structure.
+
+In python you can declare
+```python 
+array=["1","2","3"]
+# ind:  0   1   2
+```
+you can access an object with its index, for example
+
+```python 
+array[1]
+#output: 2
+```
+There are several methods that can be used in an array. here are some of them
+
+### append
+```python 
+array.append("4") #O(1)
+```
+This method will add an element to the end of the list. this will not change the indixes of the other elements.so it will have a complexity of 1 because 
+
+### pop
+
+```python 
+array.pop() #O(1)
+```
+This method will remove the last item from the list, and like the previous method, this will not change the indexes of the other items, so it will have a complexity of 1 since it will have a complexity of 1.
+so it will have a complexity of 1 because 
+Although pop will also delete an element if we give it the index as parameter 
+
+```python 
+array.pop(2) #O(n)
+```
+But it will no longer have a complexity of 1. It will be n
+### insert
+```python 
+array.insert(0,"0")#O(1)
+```
+This method will insert the "0" at the top of the list but will move all other items to the right 1 index. This will make the complexity n (the size of the list)
+
+there are many more methods that we can find like max, min, sort that can be seen in the <a href='https://wiki.python.org/moin/TimeComplexity'>python wiki</a> 

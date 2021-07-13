@@ -24,6 +24,9 @@ __Unicorn velociraptor library__.
 this library provides many of the things that make node work.some of these functions are access to the computer’s file system, operating system, networking, and more.the most important functionality's are the event loop and thread pool
 
 ## Process
+<center>
+<img src="https://imgur.com/Huo8FNl.jpg"></img>
+</center>
 Node.js application run on a single thread.think of the thread as a program(instructions).Since the node is single-threaded, you have to be careful not to block it. So be careful with:
 
 - using sync versions of fs, crypto or zlib module functions within callback functions.
@@ -43,6 +46,9 @@ The event loop performs all the operations of the application but some of them a
 In these cases node takes care and offloads the task to a thread pool, 
 
 ### Event loop
+<center>
+<img src="https://imgur.com/LPOEXR4.jpg"></img>
+</center>
 
 Any code inside the callback functions is executed inside the event loop. That is to say, this is where all the asynchronous code is executed. 
 When we start our application, the event loop begins executing immediately. Each phase of the event loop has its own callback queue. Some of these phases are more important than others, the most important being
@@ -87,3 +93,56 @@ myEmitter.on('myevent',name=>{       //Observer 1
 });
 myEmitter.emit('myevent', "Pablo") // object that emits the event
 ```
+### Streams
+A Stream is a collection of data that is not available all at once, since it is transmitted piece by piece (called chunks). This allows you to read and write each chunk without waiting for all the data to be available.
+Streams work by default with buffers, as long as it has not been specifically configured to work with objects.__Streams are instances of an EventEmitter class__ So they can receive and send events.
+
+This is used to avoid the error when the node memory is exceeded, since node has a memory limit of 2gb. This happens because with the streams we are working piece by piece and this is freeing memory as the information is used.
+Think of youtube or netflix, they are called stream platforms because they use the same principle (they load each video chunk by chunk).
+
+In node there are 4 fundamental types:
+
+## Redable streams
+These streams are the ones that can read information (consume data). An example of these streams can be when there is an http request (the data that comes from a server is received piece by piece) another example can be with file system because when we read a file we read it piece by piece (fs read).
+#### The most important events
+- __data:__The data event is emitted when there is a new piece of data to consume.
+- __end:__The end event a is emitted when there is no more piece of data to consume.
+#### The most important functions
+- __pipe():__
+- __read():__
+#### Example
+for example to upload a file to the page
+```js
+  server.on('request', (req, res) => {
+   fs.readFile('text-file.txt', (err, data) => {
+     res.end(data)
+   });
+  });
+```
+This will load the entire file into memory when there is a request, so if the file is very large it will take a long time to load:
+
+```js
+  server.on("request", (req, res) => {
+  const readable = fs.createReadStream("text-file.txt");
+  readable.on("data", chunk => {
+    res.write(chunk);
+  });
+  readable.on("end", () => {
+    res.end();
+  });
+});
+```
+
+
+## Writable streams
+These streams unlike the redable streams are the ones that can write and manipulate data. Some examples of these streams are when there is an http response (when we send back to the client) this is a writable stream another example would be with file system when we write a file (fs write) piece by piece. 
+#### The most important events
+- __drain:__The data event is emitted when there is a new piece of data to consume.
+- end:__end:__The end event a is emitted when there is no more piece of data to consume.
+#### The most important functions
+- __write()__
+- __end()__ 
+## Duplex streams
+We can say that these streams are a combination of the 2 previous ones since they can read and write at the same time. They are less common than the previous ones but it does not make them less important. An example of this would be a web socket of a module.
+## Transform streams
+This stream is a duplex stream, but it can edit, transform the data being read. A good example of this stream is the core module zlib or gzip.
