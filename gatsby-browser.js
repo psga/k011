@@ -23,19 +23,21 @@ const component = {
         theme={theme} 
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <pre className={className + " overflow-auto ba b--white-20 br2"} style={style}>
+          <pre className={className + " overflow-auto ba b--white-20 ma1 br2"} style={style}>
+	   <div className="pa3 bg-black">
             {tokens.map((line, i) => {
               if (i === tokens.length - 1) {
                 return null
               }
               return (
-                <div {...getLineProps({ line, key: i })}  className="bg-black  pa2 br2">
+                <div {...getLineProps({ line, key: i })}  className="bg-black f7 pb1">
                   {line.map((token, key) => {
                     return <span {...getTokenProps({ token, key })} />
                   })}
                 </div>
               )
             })}
+                </div>
           </pre>
         )}
       </Highlight>

@@ -4,7 +4,6 @@ date: "2021-05-26"
 description: "Event loop, threads ..."
 ---
 
-for more info https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/
 
 # Node Architecture
 Node depends on a set of libraries which is what makes it node. Some of these are:
@@ -69,7 +68,10 @@ the idea of the event loop is that:
 - Events are emitted, events are emitted from an asynchronous function such as receiving an HTTP request, the fileSystem module or a timer has finished.
 - Afterwards, the event loop picks them up. The callback functions are executed and as mentioned above, event-loop offloads the heaviest tasks to the thread-pool.
 
+<a href='https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick'>.</a>
+
 ## The event-driven architecture
+---
 Node has objects called event emitters. They emit events when a file is read, when a timer ends, or when a network request is made, among other things. These events are picked up by the event listener that we can configure.an example of this is when we want to create a server.
 ```js
  const server = http.createServer();
@@ -94,6 +96,7 @@ myEmitter.on('myevent',name=>{       //Observer 1
 myEmitter.emit('myevent', "Pablo") // object that emits the event
 ```
 ### Streams
+---
 A Stream is a collection of data that is not available all at once, since it is transmitted piece by piece (called chunks). This allows you to read and write each chunk without waiting for all the data to be available.
 Streams work by default with buffers, as long as it has not been specifically configured to work with objects.__Streams are instances of an EventEmitter class__ So they can receive and send events.
 
@@ -102,13 +105,16 @@ Think of youtube or netflix, they are called stream platforms because they use t
 
 In node there are 4 fundamental types:
 
-## Redable streams
+### Redable streams
 These streams are the ones that can read information (consume data). An example of these streams can be when there is an http request (the data that comes from a server is received piece by piece) another example can be with file system because when we read a file we read it piece by piece (fs read).
 #### The most important events
 - __data:__The data event is emitted when there is a new piece of data to consume.
 - __end:__The end event a is emitted when there is no more piece of data to consume.
 #### The most important functions
-- __pipe():__
+- __pipe():__ the method used to take a readable stream and connect it to a writeable stream. 
+```js
+readableSource.pipe(writeableDest)
+```
 - __read():__
 #### Example
 for example to upload a file to the page
@@ -132,9 +138,16 @@ This will load the entire file into memory when there is a request, so if the fi
   });
 });
 ```
+or we can also used pipe
+```js
+  server.on("request", (req, res) => {
+  const readable = fs.createReadStream("text-file.txt");
+  readable.pipe(res)
+});
+```
 
 
-## Writable streams
+### Writable streams
 These streams unlike the redable streams are the ones that can write and manipulate data. Some examples of these streams are when there is an http response (when we send back to the client) this is a writable stream another example would be with file system when we write a file (fs write) piece by piece. 
 #### The most important events
 - __drain:__The data event is emitted when there is a new piece of data to consume.
@@ -142,7 +155,8 @@ These streams unlike the redable streams are the ones that can write and manipul
 #### The most important functions
 - __write()__
 - __end()__ 
-## Duplex streams
+### Duplex streams
 We can say that these streams are a combination of the 2 previous ones since they can read and write at the same time. They are less common than the previous ones but it does not make them less important. An example of this would be a web socket of a module.
-## Transform streams
+### Transform streams
 This stream is a duplex stream, but it can edit, transform the data being read. A good example of this stream is the core module zlib or gzip.
+
