@@ -1,0 +1,64 @@
+---
+title: Hash tables Data Structures
+date: "2021-07-26"
+description: "Hash tables Data Structures"
+---
+# Hash tables
+The Hash Table is a Data Structure in an "associative" way, that is, it has to associate a key with a value to perform its operations.
+
+The key is associated with the value thanks to the hash function. This function is used to calculate the index that corresponds to the value of the key that we have passed to it.
+
+This structure also has the particularity that it is one of the most efficient and fastest Data Structures, this is because its execution time is constant in the average case. The complexity of hash tables is:
+<center>
+<img src="https://i.imgur.com/PoByZvQ.png"></img>
+</center>
+
+## The hash function
+
+The hash function is the most important part of the hash table since it determines the cost of this data structure.
+
+The hash function what it does with the key is to convert it so to speak into a code. This code what this function does is that when we pass the key this key is going to be passed by the function and this function is going to transform it into a reference to the memory.
+
+The hash function inside is a set of mathematical operations that unwraps the key until it can not be understood for example if we give the values "hola" or "Hola" it will give us:
+
+<center>
+"hola"=>4d186321c1a7f0f354b297e8914ab240 
+</center>
+
+<center>
+"Hola"=>f688ae26e9cfa3ba6235477831d5122e
+</center>
+
+As we can see this will give a totally different value although the only difference between the 2 words is the capitalization, and these values are unique, "hola" and "Hola" will always take these values. 
+
+The hash functions will almost always take a predetermined length, for example "a" and "how are you doing bro" when passed through the hash function will have the same length so there will be collisions.
+
+A characteristic of hash tables is that a computer does not take time to make it but it is very difficult to undo it so much so that. 
+
+The hash table stores the elements in the __slots__ or __buckets__.
+
+## collision
+We know that most hashes have a fixed length size, this means that it can happen the situation that 2 different inputs (keys) passing through the hash function can result in the same value.
+
+It is mathematically impossible that a collision does not occur, but we can say that collisions mostly occur in bad algorithms, if an algorithm has collisions then the algorithmic complexity will vary. Let's see an example:
+
+Suppose that the hash function goes to a single reference in memory, this will gather several values let's say in an array or the a linked list so read or modify will have the algorithmic complexity of one of them.
+
+It is possible to create a collision free algorithm, this is done by being careful with the length and the amount of keys we have or the hash algorithm we are using (MD5 or some SHA algorithm).
+
+
+## Example
+In Python, the Dictionary data types represent the implementation of hash tables.
+Let's see an example
+
+```python
+dict = {'Name': 'Enrique',     
+        'Age':18,              
+        'Gender':'male',       
+        'Idiom': 'en',
+        'second idiom': 'es'   
+        }
+
+print(dict['second idiom']) # es
+```
+

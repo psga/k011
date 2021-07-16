@@ -1,0 +1,43 @@
+---
+title: RSA 
+date: "2021-08-14"
+description: "Modular arithmetic, cryptography"
+---
+
+# Modular arithmetic
+Set an integer $n>1$, we will refer to it as the module. Recall that any integer b can be written in a single form as 
+$$
+b=nq+r
+$$
+where $0\leq r < n$ the number r is called the remainder.
+
+We say that a and b are congruent modulo n if they verify either of the two equivalent statements. 
+- a and b give the same remainder when dividing by n. 
+- The difference between $a$ and $b$ is a multiple of n, i.e.$(a-b)\in n\Z$.we write in that case $a\equiv b$ (mod n)
+
+__NOTES__ When, for context, it is not necessary to specify the module we will simply write $a\equiv b$
+note that given $a\in Z$, we denote by $\bar{a}$ the remainder of dividing a by n. the set ${ \lbrace\bar{0},\bar{1},...,\overline{n-1}} \rbrace$ of all posible residues is denoted $\Z/n\Z$ using this notation, it is the same to write(for example if we work module 4) $\bar{7}=\bar{3}$ or $7\equiv 4$ Both expressions have the same meaning 
+
+# Euclid's algorithm
+This is a way to find the d.c.m. between two integers. Moreover, it allows to write this d.c.m. as a linear combination (with integer coefficients) of these. For example, let us calculate the d.c.m. between a = 236441 and b = 45955. We consider the pair (236411, 45955) We divide the larger by the smaller, obtaining.
+
+<center>236441 = 5 × 45955 + 6666 </center>
+
+We then temporarily forget about the larger number, and keep the remainder as the new number. That is, we pass to the pair (45955, 6666). We perform the same operation again, dividing the small by the large, consider the new pair formed by the previous small and by the remainder:
+<center>
+ 45955 = 6 × 6666 + 5959,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (6666, 5959) 
+
+6666 = 1 × 5959 + 707, &nbsp;&nbsp;&nbsp;&nbsp; 	(5959, 707) 
+
+5959 = 8 × 707 + 303,  &nbsp;&nbsp;&nbsp;&nbsp;		(707, 303)
+
+ 707 = 2 × 303 + 101,  &nbsp;&nbsp;&nbsp;&nbsp;		(303, 101)
+
+ 303 = 3 × 101 + 0,    &nbsp;&nbsp;&nbsp;&nbsp;		(101, 0)
+</center>
+
+Terminate the process when it reaches a zero residue. The above residue is the m.c.d. i.e. m.c.d.(236411, 45955) = 2. 
+
+```python
+
+```
