@@ -7,5 +7,59 @@ Let&#x27;s see an example</p><pre><code class="language-python">dict = {&#x27;Na
         &#x27;second idiom&#x27;: &#x27;es&#x27;   
         }
 
-print(dict[&#x27;second idiom&#x27;]) # es
+dict[&#x27;second idiom&#x27;] # es
+</code></pre><h2>implement</h2><p>althouh in some languages it works a little differently, we can implement a hash table in this way</p><pre><code class="language-python">class hash_table():            
+    def __init__(self,size):   
+        self.size = size       
+        self.data = [None]*self.size    
+    def __str__(self):
+        return str(self.__dict__)       
+    def _hash(self, key):
+        hash = 0               
+        for i in range(len(key)):       
+            hash = (hash + ord(key[i])*i) % self.size
+        return hash            
+  
+    def set(self, key, value): 
+        hash = self._hash(key) 
+        if not self.data[hash]:         
+            self.data[hash] = [[key,value]] 
+        else:
+            self.data[hash].append([key, value])
+
+    def get(self,key):
+        hash = self._hash(key)
+        if self.data[hash]:
+            for i in range(len(self.data[hash])): 
+                if self.data[hash][i][0] == key: 
+                    return self.data[hash][i][1]    
+        return None
+
+
+    def keys(self): 
+        keys_array = [] 
+        for i in range(self.size):      
+            if self.data[i]:
+                if len(self.data[i]) &gt; 1:       
+                    for j in range(len(self.data[i])):  
+                        keys_array.append(self.data[i][j][0])
+                else:
+                    keys_array.append(self.data[i][0][0])
+        return keys_array
+
+    def values(self): 
+        values_array = []
+        for i in range(self.size):      
+            if self.data[i]:
+                for j in range(len(self.data[i])):
+                    values_array.append(self.data[i][j][1])
+        return values_array
+</code></pre><h2>Pros and Cons:</h2><h3>Pros</h3><ul><li><strong>Fast</strong>: the most important advantage over hash tables is that it is fast in accessing, deleting and saving data. For this reason it is widely used in databases.</li><li><strong>Use</strong>: is very easy to use and understand</li></ul><h3>Cons</h3><ul><li><strong>Collisions</strong>: the collisions can become inefficient when there are many keys in the hash tables</li><li><strong>values</strong>: hash tables do not allow for all types of values (eg. NULL)</li><li><strong>memory</strong>: if space is reserved for all possible elements it may require more memory than needed</li></ul><h2>Example</h2><p>we can see a great example with a Google Interview Question:
+Given an array, return the first recurring character</p><p>Example1 : array = <!-- -->[2,5,6,2,6,5,1,4]</p><p>It should return 2              </p><pre><code class="language-python">def sl(array):
+    dictionary = dict()
+    for item in array:
+        if item in dictionary:
+            return item
+        else:
+            dictionary[item] = True
 </code></pre></article></div></div></main></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/blog/dt2/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-b71b9362b942c4bf9334.js"],"app":["/app-627966e0af6d8169f76e.js"],"component---src-components-blogpost-blogpost-jsx":["/component---src-components-blogpost-blogpost-jsx-213f9285933938ebdebe.js"],"component---src-pages-404-jsx":["/component---src-pages-404-jsx-c6e6d9898369721d81b6.js"],"component---src-pages-index-jsx":["/component---src-pages-index-jsx-299f544e06a961f4de7e.js"]};/*]]>*/</script><script src="/k011/polyfill-b71b9362b942c4bf9334.js" nomodule=""></script><script src="/k011/component---src-components-blogpost-blogpost-jsx-213f9285933938ebdebe.js" async=""></script><script src="/k011/commons-54eea1cc2e7c7bd9f6a5.js" async=""></script><script src="/k011/app-627966e0af6d8169f76e.js" async=""></script><script src="/k011/styles-8fab2804fb6f85b824b6.js" async=""></script><script src="/k011/framework-d585a04b7d285a7760d6.js" async=""></script><script src="/k011/webpack-runtime-22e416b1fd0b95db3611.js" async=""></script></body></html>
