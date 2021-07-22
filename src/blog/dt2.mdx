@@ -59,6 +59,84 @@ dict = {'Name': 'Enrique',
         'second idiom': 'es'   
         }
 
-print(dict['second idiom']) # es
+dict['second idiom'] # es
 ```
+## implement
+althouh in some languages it works a little differently, we can implement a hash table in this way
 
+```python
+class hash_table():            
+    def __init__(self,size):   
+        self.size = size       
+        self.data = [None]*self.size    
+    def __str__(self):
+        return str(self.__dict__)       
+    def _hash(self, key):
+        hash = 0               
+        for i in range(len(key)):       
+            hash = (hash + ord(key[i])*i) % self.size
+        return hash            
+  
+    def set(self, key, value): 
+        hash = self._hash(key) 
+        if not self.data[hash]:         
+            self.data[hash] = [[key,value]] 
+        else:
+            self.data[hash].append([key, value])
+
+    def get(self,key):
+        hash = self._hash(key)
+        if self.data[hash]:
+            for i in range(len(self.data[hash])): 
+                if self.data[hash][i][0] == key: 
+                    return self.data[hash][i][1]    
+        return None
+
+
+    def keys(self): 
+        keys_array = [] 
+        for i in range(self.size):      
+            if self.data[i]:
+                if len(self.data[i]) > 1:       
+                    for j in range(len(self.data[i])):  
+                        keys_array.append(self.data[i][j][0])
+                else:
+                    keys_array.append(self.data[i][0][0])
+        return keys_array
+
+    def values(self): 
+        values_array = []
+        for i in range(self.size):      
+            if self.data[i]:
+                for j in range(len(self.data[i])):
+                    values_array.append(self.data[i][j][1])
+        return values_array
+```
+## Pros and Cons:
+### Pros
+- __Fast__: the most important advantage over hash tables is that it is fast in accessing, deleting and saving data. For this reason it is widely used in databases.
+- __Use__: is very easy to use and understand
+
+### Cons
+- __Collisions__: the collisions can become inefficient when there are many keys in the hash tables
+- __values__: hash tables do not allow for all types of values (eg. NULL)
+- __memory__: if space is reserved for all possible elements it may require more memory than needed
+
+## Example
+we can see a great example with a Google Interview Question:
+Given an array, return the first recurring character
+
+Example1 : array = [2,5,6,2,6,5,1,4]
+
+It should return 2              
+
+
+```python
+def sl(array):
+    dictionary = dict()
+    for item in array:
+        if item in dictionary:
+            return item
+        else:
+            dictionary[item] = True
+```
