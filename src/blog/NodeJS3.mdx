@@ -1,7 +1,7 @@
 ---
 title: What is a API and API Rest 
 date: "2021-05-26"
-description: "api"
+description: "api and express"
 ---
 # API
 The term API is an abbreviation for Application Programming Interfaces. It is a set of definitions and protocols used to develop and integrate application software, enabling communication between two software applications through a set of rules.
@@ -22,4 +22,17 @@ One of the main functions of APIs is to make developers' work easier and save th
 With this, you won't have to reinvent the wheel with every service you create, since you can use parts or functions that others have already created. Imagine if every online store had to have its own payment system, for normal users it is much more convenient to be able to do it with the main services that almost everyone uses.
 
 
+## API REST
+is an interface for connecting various systems based on the HTTP protocol and servers to obtain and generate data and operations, returning that data in very specific formats, such as json
+this can create an HTTP request that contains all the necessary information, that is to say, a REQUEST to a server has all the necessary information and only waits for a RESPONSE, that is to say, a concrete answer.
+It relies on the basic methods of HTTP, such as:
+- __Post__ : To create new resources.
+- __Get__  : To obtain a file or a specific resource.
+- __Put__  : To modify.
+- __Patch__: To modify a resource that is not a data resource, for example.
+- __Delete__: To delete a resource, a data for example of our database.
+All the objects are manipulated by means of URI, for example, if we have a
 
+An api must be stateless i.e. each request must contain all the information necessary to be understood by the server, rather than relying on the server to remember previous requests.
+
+Storing session state on the server violates the stateless constraint of the REST architecture. Therefore, session state must be handled entirely by the client.

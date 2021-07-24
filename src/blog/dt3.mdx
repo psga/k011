@@ -1,0 +1,138 @@
+---
+title: Linked list
+date: "2021-07-26"
+description: "Linked list Data Structures"
+---
+# Linked List
+first we must know what a node is;
+
+the linked list is a dynamic data structure in which each element points to the next. the number of nodes in this list can grow and shrink, i.e. it is not fixed. This data structure is one of the simplest and most common, and it can be used to implement many other types of data (for example in hash tables). it has several advantages and disadvantages with respect to an array, but the main advantage of a linked list is that the elements of the list can be easily inserted or deleted without reassigning or reorganizing the whole structure.  
+##Node
+the node that works in the linked list has 2 data, the value and the reference to the other node as shown in the picture
+<center>
+<img src='https://i.imgur.com/xMCPn2P.png'></img>
+</center>
+This is how it could be implemented 
+
+```python
+class Node():
+    def __init__(self, data): 
+        self.data = data 
+        self.next = None 
+```
+
+## Implementation linked list:
+
+```python
+
+class Node():
+    def __init__(self, data): 
+        self.data = data 
+        self.next = None 
+
+
+class LinkedList():
+    def __init__(self):
+        self.head = None
+        self.tail = self.head
+        self.length = 0
+
+    def append(self, data):
+        new_node = Node(data)
+        if self.head == None:
+            self.head = new_node
+            self.tail = self.head
+            self.length = 1
+        else:
+            self.tail.next = new_node
+            self.tail = new_node
+            self.length += 1
+
+    def prepend(self, data):
+        new_node = Node(data)
+        if self.head == None:
+            self.head = new_node
+            self.tail = self.head
+            self.length += 1
+        else:
+            new_node.next = self.head
+            self.head = new_node
+            self.length += 1
+
+    def print_list(self):
+        if self.head == None:
+            print("Empty")
+        else:
+            current_node = self.head
+            while current_node!= None:
+                print(current_node.data, end= ' ')
+                current_node = current_node.next
+        print()
+
+    def insert(self, position, data):
+        if position >= self.length:
+            if position>self.length:
+                print("This position is not available. Inserting at the end of the list")
+            new_node = Node(data)
+            self.tail.next = new_node
+            self.tail = new_node
+            self.length += 1
+        elif position == 0:
+            new_node = Node(data)
+            new_node.next = self.head
+            self.head = new_node
+            self.length += 1
+        else:
+            new_node = Node(data)
+            current_node = self.head
+            for i in range(position-1):
+                current_node = current_node.next
+            new_node.next = current_node.next
+            current_node.next = new_node
+            self.length += 1
+
+
+    def delete_by_value(self, data):
+        if self.head == None:
+            print("Linked List is empty. Nothing to delete.")
+            return
+        current_node = self.head
+        if current_node.data == data:
+            self.head = self.head.next
+            if self.head == None or self.head.next==None:
+                self.tail = self.head
+            self.length -= 1
+            return
+        while current_node.next!= None and current_node.next.data != data:
+            current_node = current_node.next
+        if current_node.next!=None:
+            current_node.next = current_node.next.next
+            if current_node.next == None:
+                self.tail = current_node
+            self.length -= 1
+            return
+        else:
+            print("Given value not found.")
+
+    def delete_by_position(self, position):
+        if self.head == None:
+            print("Linked List is empty. Nothing to delete.")
+            return
+        if position == 0:
+            self.head = self.head.next
+            if self.head == None or self.head.next == None:
+                self.tail = self.head
+            self.length -= 1
+            return
+        if position>=self.length:
+            position = self.length-1
+        current_node = self.head
+        for i in range(position - 1):
+            current_node = current_node.next
+        current_node.next = current_node.next.next
+        self.length -= 1
+        if current_node.next == None:
+            self.tail = current_node
+        return
+
+```
