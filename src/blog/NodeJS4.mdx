@@ -3,5 +3,31 @@ title: The Request/Response Cycle and Middleware
 date: "2021-05-26"
 description: "What is the Request/Response Cycle"
 ---
-#Request/response Cycle
+# Request/response Cycle
+## What is the request/response cycle?
+When a request is received, the express app will create 2 objects: request object and response object, the data will be used and processed to generate a meaningful response. Then to process that data we use something called middleware which can manipulate the request object and the response object and even execute any code we put in.
+## Middleware
+middleware is a function which can be executed before or after the handling of a route, so middleware is not only used for request and response objects, but it is usually used for this.
+It is used to verify access levels before entering a route, validate data, handle errors.
+Middeware accesses the Request, Response, next objects.
+
+Some examples of middleware in Express are,
+- body parse: This gives access to the body information of a POST request.
+- logging: for a logging system.
+- setting headers
+- router: for example the widely used res.send().
+All middleware we use is called __middleware stack__.
+
+The request and response objects process all the middleware stack step by step until they go through it all, after that they send the response and finish the cycle (we call this request-Response cycle).
+
+An example of middleware is the 
+```js
+app.use(express.json())
+```
+
+We can create our own middleware functions
+```js
+app.use((req,res,next)=>) 
+
+```
 

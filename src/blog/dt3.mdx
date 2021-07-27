@@ -134,5 +134,13 @@ class LinkedList():
         if current_node.next == None:
             self.tail = current_node
         return
-
 ```
+
+# Doubly Linked List
+Unlike a normal linked list in which in each node there was a reference to the next node in a doubly linked list in each node there are 2 references, one to the next node and one to the previous one.
+By having 2 references it spends more memory and although it has the same algorithmic complexity it can be seen that it is a little faster in some aspects, since for example to arrive to the penultimate element instead of going through almost the whole list it will only go through the last one.
+<center>
+<img class="w-60-l w-100" src='https://i.imgur.com/n3SkmOc.png'></img>
+</center>
+the only thing that would have to be done to implement the above list and turn it into a Doubly linked list would be to add a new property to the node and change a little the functions of the classes to notice the difference between a doublyLinkedList and a LinkedList.
+
