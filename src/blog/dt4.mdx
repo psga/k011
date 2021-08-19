@@ -3,4 +3,177 @@ title: Stacks+ queues
 date: "2021-07-26"
 description: "Linked list Data Structures"
 ---
+# Stacks
+
+This data structure is an ordered list that allows to store and retrieve data. This ordered list works by LIFO (Last In, First Out). The analogy of a stack of dishes is often used and refers to putting dishes on top of each other.
+<center>
+<img class="w-40-l w-60" src='https://i.imgur.com/oRnVwt3.png'></img>
+</center>
+
+This term is not only used in computing, it is also used in storage management of any kind.
+
+Stacks can be implemented from Arrays and linked List.
+
+Let' see the implementation with **Linked list** 
+
+The functions that in general are used in stacks are: 
+
+- Lookup: See the list content 
+- peek: this return top element of the list 
+- push: This inserts an element in top of the list
+- pop : This removes top element from the list
+
+<center>
+<img class="w-20-l w-50" src='https://i.imgur.com/kGQPkn0.png'></img>
+</center>
+
+### Linked list implementation
+
+```python
+class Stack():
+    def __init__(self):
+        self.top = None
+        self.bottom = None
+        self.length = 0
+
+    def peek(self):
+        if self.top is None:
+            return None
+        return self.top.data
+
+    def push(self, data):
+        new_node = Node(data)
+        if self.top == None:
+            self.top = new_node
+            self.bottom = new_node
+        else: 
+            new_node.next = self.top
+            self.top = new_node
+        self.length += 1
+
+    def pop(self):
+        if self.top == None: 
+            print("Stack empty")
+        else:
+            self.top = self.top.next
+            self.length -= 1
+            if(self.length == 0):
+                self.bottom = None
+
+    def print_stack(self):
+        if self.top == None:
+            print("Stack empty")
+        else:
+            current_pointer = self.top
+            while(current_pointer!=None):
+                print(current_pointer.data)
+                current_pointer = current_pointer.next
+```
+
+### Stack with Arrays
+
+Stacks can be used with arrays, as they are very simple and works somewhat similar with respect to algorithmic complexity
+
+```python
+class Stack():
+    def __init__(self):
+        self.array = []
+
+    def peek(self):
+        return self.array[len(self.array)-1]
+
+    def push(self, data):
+        self.array.append(data)
+        return
+
+    def pop(self):
+        if len(self.array)!= 0:
+            self.array.pop()
+            return
+        else:
+            print("Stack Empty")
+            return
+
+    def print_stack(self):
+        for i in range(len(self.array)-1, -1, -1):
+            print(self.array[i])
+        return
+```
+
+# Queues
+
+This data structure is an ordered list that, like the stacks, allows to store and manage data. This data structure follos the FIFO ("First in, First Out") method.
+
+A good analogy for this is the rows of people 
+<center>
+<img class="w-20-l w-50" src='https://i.imgur.com/yixXDnT.png'></img>
+</center>
+
+Where the first in is served first.
+
+The general functions used by queues are
+
+- lookup: View the contents of the list 
+- enqueue: This will add an element to the end of the list
+- dequeue: This will remove the first element
+- peek: Returns the first in the list
+
+<center>
+<img class="w-20-l w-50" src='https://i.imgur.com/kGQPkn0.png'></img>
+</center>
+
+This is generally not implemented with arrays since we know that removing or adding an element to the beginning of the list has a complexity of n so it is mostly implemented with linkedlist:
+
+```python
+class Queue():
+
+    def __init__(self):
+        self.first = None
+        self.last = None
+        self.length = 0
+
+    def peek(self):
+        return self.first.data
+
+    def enqueue(self, data):
+        new_node = Node(data)
+        if self.last == None:
+            self.last = new_node
+            self.first = self.last
+            self.length += 1
+            return
+        else:
+            self.last.next = new_node
+            self.last = new_node
+            self.length += 1
+            return
+
+    def dequeue(self):
+        if self.last == None:
+            print("Quue Empty")
+            return
+        if self.last == self.first:
+            self.last = None
+        self.first = self.first.next
+        self.length -= 1
+        return
+
+    def print_queue(self):
+        if self.length == 0:
+            print("Queue Empty")
+            return
+        else:
+            current_pointer = self.first
+            while(current_pointer!= None):
+                if current_pointer.next == None:
+                    print(current_pointer.data)
+                else:
+                    print(f'{current_pointer.data}  <<--  ', end='')
+                current_pointer = current_pointer.next
+            return
+```
+
+### Interesting note.
+
+One of the most interesting problems involving stacks or queues is to <a href="https://leetcode.com/problems/implement-queue-using-stacks/description/" class="link  white hover-white-60" target="_blank">a queue with stacks</a>.
 
