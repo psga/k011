@@ -1,0 +1,113 @@
+---
+title: Trees  
+date: "2021-07-26"
+description: "Binary Trees,Binary Heap"
+---
+
+# Tree
+los trees son lo contrario a los arrays y las estructuras como linked list hash tables, ya que los mencionados anteriormente son lineales.Y los trees no son lineales, ya que pueden tener 0 o mas nodos hijos 
+
+<center>
+<img class="w-40-l w-60" src='https://imgur.com/zCm3Wld.png'></img>
+</center>
+
+
+Un tree comienza con un solo nodo llamado root o un nodo padre y cada hijo del tree deciende desde este nodo. podemos notar en el ejemplo anterior que un nodo hijo solo tiene un nodo padre pero un nodo padre puede tener varios hijos, Esta relacion va en una direccion, puede ir de padre a hijo o de hijo a padre.
+
+Los trees son muy importantes ya que se utilizan demasiado en las ciencias de la computacion todos los dias.
+
+### Ejemplo
+
+Un ejemplo de trees es con la estructura de html, Aunque no es un lenguaje de programacion se puede ver una estructura similar a la de los trees.
+En Html podemos decir que el root node es la etiqueta html esta etiqueta tendra 2 nodos hijos que seria el < body> y el < head> y asi dentro de estas etiquetas tendra mas hijos ... .
+
+Otro ejemplo serian los comentarios de una pagina web donde cada comentario puede ser respondido con otro comentario.
+
+### Tipos
+
+Existen una gran cantidad de tipos de tree en las ciencias de la computacion.
+<a href="https://en.wikipedia.org/wiki/List_of_data_structures#Trees" class="link  white hover-white-60" target="_blank">Puedes ver en wikipedia esta cantidad</a>
+
+## Binary Tree
+
+Un binary tree es una estructura de datos Tree que tiene que seguir unas ciertas reglas:
+
+- Un nodo debe tener como maximo 2 nodos hijos
+- Un hijo no puede tener mas de un padre
+
+En la imagen anterior podemos ver que ese nodo no es un binary tree ya que  el nodo L tiene mas de 2 hijos  
+
+<a href="https://visualgo.net/bn/bst" class="link  white hover-white-60" target="_blank">Como funciona?</a>
+
+### Tipos de binary tree
+
+<img class="w-40-l w-60" src='https://imgur.com/t2zc7Mp.png'></img>
+
+Puedes consultar como identificar cada nodo en <a href="https://towardsdatascience.com/5-types-of-binary-tree-with-cool-illustrations-9b335c430254" class="link  white hover-white-60" target="_blank">este link</a>.
+
+En el que nos interesa crear es el Perfect binary tree, ya que este tiene las propiedades mas interesantes y es mucho mas que la mayoria eficiente.
+
+Algunas propiedades interesantes
+
+- se puede calcular el numero por la altura $2^h - 1$
+
+### Complejidad de un Perfect binary tree
+
+<img class="w-40-l w-60" src='https://imgur.com/0bqCCet.png'></img>
+
+### Binary tree unBalanced and Balanced
+
+Estos binary tree como se ven en la imagen de los tipos de binary tree esta desbalanceada, Este es un problema de los binary tree ya que estos pueden tomar esa forma.  Al tomar esta forma tendra una complejidad mayor.
+
+<img class="w-40-l w-60" src='https://imgur.com/qDrawT7.png'></img>
+
+Ya que operarán similar a una estructura de datos (linked list).
+
+### Cuando Usarlo?
+
+El binary tree como vemos, cuando es un perfect binary tree es la estructura de datos mas rapida en todas las operaciones. Tambien podemos ver que es ordenado. Por lo tanto es facil de imaginar donde está cada nodo y como esta montada la estructura. Esta tiene un tamaño flexible.
+
+En general es bueno utilizarlo cuando tenemos datos que encajan en una Binary Tree balanceado o perfecto. (por ejemplo en una lista al azar o en algo relativo)
+
+### Cuando no usarlo
+
+Una de las desventajas es que ninguna operacion tiene O(1) de complejidad por lo que si solo vamos a utilizar una lista para añadir un elemento o eliminar un ultimo o primer elemento es mejor utilizar otra estructura de datos como linked list o Arrays 
+
+## Implementarlo
+
+Es facil complementarlo, lo dificil viene cuando se elimina un elemento, ya que tiene una estructura un poco dificil de entender
+
+```python
+code
+```
+
+## AVL Trees + Red Black Trees
+
+estos son muy similares y muy utilices para balancear un Binary Tree  ya que estos lo que hacen es cuando se añade o se elimina un elemento, cambiara el orden de los nodos para balancearlos. 
+
+### AVL Tree
+
+El árbol AVL toma su nombre de las iniciales de los apellidos de sus inventores, 
+
+<a href="https://es.wikipedia.org/wiki/Georgii_Adelson-Velskii" class="link  white hover-white-60" target="_blank">Georgii Adelson-Velskii</a> y <a href="https://es.wikipedia.org/wiki/Yevgeniy_Landis" class="link  white hover-white-60" target="_blank">Yevgeniy Landis</a> . Lo dieron a conocer en la publicación de un artículo en 1962, «An algorithm for the organization of information» («Un algoritmo para la organización de la información»).
+
+Los árboles AVL están siempre equilibrados de tal modo que para todos los nodos, la altura de la rama izquierda no difiere en más de una unidad de la altura de la rama derecha o viceversa. Gracias a esta forma de equilibrio (o balanceo), la complejidad de una búsqueda en uno de estos árboles se mantiene siempre en orden de complejidad log n. El factor de equilibrio puede ser almacenado directamente en cada nodo o ser computado a partir de las alturas de los subárboles.
+
+<img class="w-40-l w-60" src='https://imgur.com/5Y7Tg1Y.png'></img>
+
+### Árbol rojo-negro
+
+Un árbol rojo-negro es un tipo abstracto de datos. Concretamente, es un árbol binario de búsqueda equilibrado, una estructura de datos utilizada en informática y ciencias de la computación. La estructura original fue creada por Rudolf Bayer en 1972, que le dio el nombre de “árboles-B binarios simétricos”, pero tomó su nombre moderno en un trabajo de Leo J. Guibas y Robert Sedgewick realizado en 1978. Es complejo, pero tiene un buen peor caso de tiempo de ejecución para sus operaciones y es eficiente en la práctica. Puede buscar, insertar y borrar en un tiempo O(log n), donde n es el número de elementos del árbol.
+
+<img class="w-40-l w-60" src='https://imgur.com/mIZSxLZ.png'></img>
+
+## Binary Heap
+
+son un caso particular y sencillo de la estructura de datos Tree, y está basada en un Binary tree balanced, que puede verse como un árbol binario con dos restricciones adicionales
+
+<a href="https://www.geeksforgeeks.org/binary-heap/" class="link  white hover-white-60" target="_blank">para mas informacion</a>
+
+Este a diferencia de los anteriores, no esta ordenado por lo que el buscar un elemento tendra una complejidad mayor 
+
+<img class="w-40-l w-60" src='https://imgur.com/knWPFCt.png'></img>
+
