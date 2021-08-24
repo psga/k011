@@ -5,109 +5,313 @@ description: "Binary Trees,Binary Heap"
 ---
 
 # Tree
-los trees son lo contrario a los arrays y las estructuras como linked list hash tables, ya que los mencionados anteriormente son lineales.Y los trees no son lineales, ya que pueden tener 0 o mas nodos hijos 
+Trees are the opposite of arrays and structures such as linked list hash tables, since the aforementioned are linear, and trees are not linear, since they can have 0 or more child nodes
 
 <center>
-<img class="w-40-l w-60" src='https://imgur.com/zCm3Wld.png'></img>
+<img class="w-60-l w-80" src='https://imgur.com/zCm3Wld.png'></img>
 </center>
 
 
-Un tree comienza con un solo nodo llamado root o un nodo padre y cada hijo del tree deciende desde este nodo. podemos notar en el ejemplo anterior que un nodo hijo solo tiene un nodo padre pero un nodo padre puede tener varios hijos, Esta relacion va en una direccion, puede ir de padre a hijo o de hijo a padre.
+A tree starts with a single node called root or a parent node and each child of the tree starts from this node we can notice in the previous example that a child node has only one parent node but a parent node can have several children, this relationship goes in one direction, it can go from parent to child or from child to parent.
 
-Los trees son muy importantes ya que se utilizan demasiado en las ciencias de la computacion todos los dias.
-
+Trees are very important as they are used a lot in computer science every day
 ### Ejemplo
 
-Un ejemplo de trees es con la estructura de html, Aunque no es un lenguaje de programacion se puede ver una estructura similar a la de los trees.
-En Html podemos decir que el root node es la etiqueta html esta etiqueta tendra 2 nodos hijos que seria el < body> y el < head> y asi dentro de estas etiquetas tendra mas hijos ... .
+An example of trees is with the structure of html, although it is not a programming language you can see a similar structure to the trees.
+In Html we can say that the root node is the html tag this tag will have 2 children nodes that would be < body > and the < head > and so within these tags will have more children ... .
 
-Otro ejemplo serian los comentarios de una pagina web donde cada comentario puede ser respondido con otro comentario.
+Another example would be the comments of a web page where each comment can be answered with another comment.
 
 ### Tipos
 
-Existen una gran cantidad de tipos de tree en las ciencias de la computacion.
-<a href="https://en.wikipedia.org/wiki/List_of_data_structures#Trees" class="link  white hover-white-60" target="_blank">Puedes ver en wikipedia esta cantidad</a>
+There are a large number of tree types in computer science.
+<a href="https://en.wikipedia.org/wiki/List_of_data_structures#Trees" class="link  white hover-white-60" target="_blank">You can see in wikipedia this amount</a>
 
 ## Binary Tree
 
-Un binary tree es una estructura de datos Tree que tiene que seguir unas ciertas reglas:
+A binary tree is a Tree data structure that has to follow certain rules:
 
-- Un nodo debe tener como maximo 2 nodos hijos
-- Un hijo no puede tener mas de un padre
+- A node must have a maximum of 2 child nodes
 
-En la imagen anterior podemos ver que ese nodo no es un binary tree ya que  el nodo L tiene mas de 2 hijos  
+- A child node cannot have more than one parent
 
-<a href="https://visualgo.net/bn/bst" class="link  white hover-white-60" target="_blank">Como funciona?</a>
+In the previous image we can see that this node is not a binary tree since node L has more than 2 children  
 
-### Tipos de binary tree
+<a href="https://visualgo.net/bn/bst" class="link  white hover-white-60" target="_blank">How does it work?</a>
 
-<img class="w-40-l w-60" src='https://imgur.com/t2zc7Mp.png'></img>
+### Types of binary tree
+<center>
+<img class="w-80-l w-100" src='https://imgur.com/t2zc7Mp.png'></img>
+</center>
 
-Puedes consultar como identificar cada nodo en <a href="https://towardsdatascience.com/5-types-of-binary-tree-with-cool-illustrations-9b335c430254" class="link  white hover-white-60" target="_blank">este link</a>.
+You can consult how to identigy each node in <a href="https://towardsdatascience.com/5-types-of-binary-tree-with-cool-illustrations-9b335c430254" class="link  white hover-white-60" target="_blank">this link</a>.
 
-En el que nos interesa crear es el Perfect binary tree, ya que este tiene las propiedades mas interesantes y es mucho mas que la mayoria eficiente.
+The one we are interesed in creating is the Perfect binary tree, since it has most interesting properties and is much more efficient than most.
 
-Algunas propiedades interesantes
+Some interesting properties
 
-- se puede calcular el numero por la altura $2^h - 1$
+- you can calculate the number by the height $2^h - 1$
 
-### Complejidad de un Perfect binary tree
-
-<img class="w-40-l w-60" src='https://imgur.com/0bqCCet.png'></img>
+### Complexity of a Perfect binary tree
+<center>
+<img class="w-30-l w-60" src='https://imgur.com/0bqCCet.png'></img>
+</center>
 
 ### Binary tree unBalanced and Balanced
 
-Estos binary tree como se ven en la imagen de los tipos de binary tree esta desbalanceada, Este es un problema de los binary tree ya que estos pueden tomar esa forma.  Al tomar esta forma tendra una complejidad mayor.
+These binary trees as seen in the image of the binary tree types are unbalanced. This is a problem with binary trees since they can take this form. When taking this form it will have a higher complexity.
 
+<center>
 <img class="w-40-l w-60" src='https://imgur.com/qDrawT7.png'></img>
+</center>
 
-Ya que operarán similar a una estructura de datos (linked list).
+Since they will operate similar to a linked list.
 
-### Cuando Usarlo?
+### When to use it?
 
-El binary tree como vemos, cuando es un perfect binary tree es la estructura de datos mas rapida en todas las operaciones. Tambien podemos ver que es ordenado. Por lo tanto es facil de imaginar donde está cada nodo y como esta montada la estructura. Esta tiene un tamaño flexible.
+The binary tree as we can see, when it is a perfect binary tree is the fastest data structure in all operations. We van also see that it is ordered. Therefore it is easy to imagine where each node is and how the structure is set up. It has a flexible size.
 
-En general es bueno utilizarlo cuando tenemos datos que encajan en una Binary Tree balanceado o perfecto. (por ejemplo en una lista al azar o en algo relativo)
+In general it is good to use it when we have data that fits in a balanced or perfect binary tree. (for example in a random list or in something relative)
 
-### Cuando no usarlo
+### When not to use it
 
-Una de las desventajas es que ninguna operacion tiene O(1) de complejidad por lo que si solo vamos a utilizar una lista para añadir un elemento o eliminar un ultimo o primer elemento es mejor utilizar otra estructura de datos como linked list o Arrays 
+One of the disadvantages is that no operation has O(1) complexity so if we are only going to use a list to add an element or remove a last or firts element it is better to use another data structure like linked list or Arrays
 
-## Implementarlo
+## Implement it
 
-Es facil complementarlo, lo dificil viene cuando se elimina un elemento, ya que tiene una estructura un poco dificil de entender
+It is easy to complement it, the difficult thing comes when an element is eliminated, since it has a structure a little difficult to understand.
 
 ```python
-code
+class Node():
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+
+
+class BST():
+    def __init__(self):
+        self.root = None
+        self.number_of_nodes = 0
+
+
+
+    def insert(self, data):
+        new_node = Node(data)
+        if self.root == None:
+            self.root = new_node
+            self.number_of_nodes += 1
+            return
+        else:
+            current_node = self.root
+            while(current_node.left != new_node) and (current_node.right != new_node):
+                if new_node.data > current_node.data:
+                    if current_node.right == None:
+                        current_node.right = new_node
+                    else:
+                        current_node = current_node.right
+                elif new_node.data < current_node.data:
+                    if current_node.left == None:
+                        current_node.left = new_node
+                    else:
+                        current_node = current_node.left
+            self.number_of_nodes += 1
+            return
+
+
+    def search(self,data):
+        if self.root == None:
+            return "Tree Is Empty"
+        else:
+            current_node = self.root
+            while True:
+                if current_node == None:
+                    return "Not Found"
+                if current_node.data == data:
+                    return "Found"
+                elif current_node.data > data:
+                    current_node = current_node.left
+                elif current_node.data < data:
+                    current_node = current_node.right
+
+
+    def remove(self, data):
+        if self.root == None: 
+            return "Tree Is Empty"
+        current_node = self.root
+        parent_node = None
+        while current_node!=None: 
+            if current_node.data > data:
+                parent_node = current_node
+                current_node = current_node.left
+            elif current_node.data < data:
+                parent_node = current_node
+                current_node = current_node.right
+            else: 
+                
+                if current_node.right == None:
+                    if parent_node == None:
+                        self.root = current_node.left
+                        return
+                    else:
+                        if parent_node.data > current_node.data:
+                            parent_node.left = current_node.left
+                            return
+                        else:
+                            parent_node.right = current_node.left
+                            return
+
+                
+                elif current_node.left == None:
+                    if parent_node == None:
+                        self.root = current_node.right
+                        return
+                    else:
+                        if parent_node.data > current_node.data:
+                            parent_node.left = current_node.right
+                            return
+                        else:
+                            parent_node.right = current_node.right
+                            return
+
+                
+                elif current_node.left == None and current_node.right == None:
+                    if parent_node == None:
+                         current_node = None
+                        return
+                    if parent_node.data > current_node.data:
+                        parent_node.left = None
+                        return
+                    else:
+                        parent_node.right = None
+                        return
+
+                elif current_node.left != None and current_node.right != None:
+                    del_node = current_node.right
+                    del_node_parent = current_node.right
+                    while del_node.left != None: 
+                        del_node_parent = del_node
+                        del_node = del_node.left
+                    current_node.data = del_node.data 
+                    if del_node == del_node_parent: 
+                        current_node.right = del_node.right
+                        return
+                    if del_node.right == None: 
+                        del_node_parent.left = None
+                        return
+                    else: 
+                        del_node_parent.left = del_node.right
+                        return
+        return "Not Found"
 ```
 
 ## AVL Trees + Red Black Trees
 
-estos son muy similares y muy utilices para balancear un Binary Tree  ya que estos lo que hacen es cuando se añade o se elimina un elemento, cambiara el orden de los nodos para balancearlos. 
+these are very similar and very useful to balance a binary Tree since what they do is when an element is addedñade o se elimina un elemento, cambiara el orden de los nodos para balancearlos. 
 
 ### AVL Tree
 
-El árbol AVL toma su nombre de las iniciales de los apellidos de sus inventores, 
+The AVL tree takes its name from the initial of the sumames of its inventors, <a href="https://es.wikipedia.org/wiki/Georgii_Adelson-Velskii" class="link  white hover-white-60" target="_blank">Georgii Adelson-Velskii</a> y <a href="https://es.wikipedia.org/wiki/Yevgeniy_Landis" class="link  white hover-white-60" target="_blank">Yevgeniy Landis</a> . They made it known in the publication of an article in 1962, «An algorithm for the organization of information» .
 
-<a href="https://es.wikipedia.org/wiki/Georgii_Adelson-Velskii" class="link  white hover-white-60" target="_blank">Georgii Adelson-Velskii</a> y <a href="https://es.wikipedia.org/wiki/Yevgeniy_Landis" class="link  white hover-white-60" target="_blank">Yevgeniy Landis</a> . Lo dieron a conocer en la publicación de un artículo en 1962, «An algorithm for the organization of information» («Un algoritmo para la organización de la información»).
+AVL trees are always balanced in such a way that for all nodes, the height of the left branch does not differ by more than one unit from the height of the right branch or vice versa. Thanks to this form of balancing, the complexity of a search in one of these trees is always kept in order of complexity O(log n).The balancing factor can be stored directly at each node or computed from the heights of the subtrees.
 
-Los árboles AVL están siempre equilibrados de tal modo que para todos los nodos, la altura de la rama izquierda no difiere en más de una unidad de la altura de la rama derecha o viceversa. Gracias a esta forma de equilibrio (o balanceo), la complejidad de una búsqueda en uno de estos árboles se mantiene siempre en orden de complejidad log n. El factor de equilibrio puede ser almacenado directamente en cada nodo o ser computado a partir de las alturas de los subárboles.
-
+<center>
 <img class="w-40-l w-60" src='https://imgur.com/5Y7Tg1Y.png'></img>
+</center>
 
-### Árbol rojo-negro
+### Red-black tree
 
-Un árbol rojo-negro es un tipo abstracto de datos. Concretamente, es un árbol binario de búsqueda equilibrado, una estructura de datos utilizada en informática y ciencias de la computación. La estructura original fue creada por Rudolf Bayer en 1972, que le dio el nombre de “árboles-B binarios simétricos”, pero tomó su nombre moderno en un trabajo de Leo J. Guibas y Robert Sedgewick realizado en 1978. Es complejo, pero tiene un buen peor caso de tiempo de ejecución para sus operaciones y es eficiente en la práctica. Puede buscar, insertar y borrar en un tiempo O(log n), donde n es el número de elementos del árbol.
+A red-black tree is an abstract type of data. Specifically, it is balanced binary search tree, a data structure used in computer science and informatics. The original structure was created by Rudoll Bayer in 1972, who gave it the name "Symetric binary B-Trees", but it took its modern name in a paper by Leo J.Guibas and Rober done in 1978. It is complex, but has a good worst-case runtime for its operations and is efficient in practice. It can search, insert, and delete in O(log n) time, where n is the list elemnts in the tree. 
 
+<center>
 <img class="w-40-l w-60" src='https://imgur.com/mIZSxLZ.png'></img>
+</center>
 
 ## Binary Heap
 
-son un caso particular y sencillo de la estructura de datos Tree, y está basada en un Binary tree balanced, que puede verse como un árbol binario con dos restricciones adicionales
+Are a particular and simple case of the Tree data structure and is based on a Binary tree balanced, which can be seen as a binary tree with two additional constraints
 
-<a href="https://www.geeksforgeeks.org/binary-heap/" class="link  white hover-white-60" target="_blank">para mas informacion</a>
+<a href="https://www.geeksforgeeks.org/binary-heap/" class="link  white hover-white-60" target="_blank">For more info</a>
 
-Este a diferencia de los anteriores, no esta ordenado por lo que el buscar un elemento tendra una complejidad mayor 
+This one, unlike the previous ones, is not ordered, so the search for an element will have a higher complexity.
+<center>
+<img class="w-30-l w-30" src='https://imgur.com/knWPFCt.png'></img>
+</center>
+Imagine you have a list of tasks to solve, but you want to sort them by importance. These problems are called prioty queues.
+To solve this problem you can put them in an array in order of importance, but adding an element or deleting it would be slow. To solve this we could do it with a linked list in the same way but although it is more efficient to add data than an array, seeing the less important tasks will be slow too. The best solution for this would be a binary heap.
 
-<img class="w-40-l w-60" src='https://imgur.com/knWPFCt.png'></img>
+What the binary heap does is to create a tree which is sorted in order.
 
+<center>
+<img class="w-30-l w-30" src='https://imgur.com/6iWZh6e.png'></img>
+</center>
+
+### Implementation
+
+``` python 
+import sys
+class MaxHeap:
+
+    def __init__(self, maxsize):
+        self.maxsize = maxsize
+        self.size = 0
+        self.Heap = [0] * (self.maxsize + 1)
+        self.Heap[0] = sys.maxsize
+        self.FRONT = 1
+
+    def parent(self, pos):
+        return pos // 2
+
+    def left_child(self, pos):
+        return 2 * pos
+
+    def right_child(self, pos):
+        return (2 * pos) + 1
+
+    def is_leaf(self, pos):
+        if pos >= (self.size // 2) and pos <= self.size:
+            return True
+        return False
+
+    def swap(self, fpos, spos):
+        self.Heap[fpos], self.Heap[spos] = self.Heap[spos], self.Heap[fpos]
+
+    def max_heapify(self, pos):
+
+        if not self.is_leaf(pos):
+            if (self.Heap[pos] < self.Heap[self.left_child(pos)] or
+                    self.Heap[pos] < self.Heap[self.right_child(pos)]):
+
+                if self.Heap[self.left_child(pos)] > self.Heap[self.right_child(pos)]:
+                    self.swap(pos, self.left_child(pos))
+                    self.max_heapify(self.left_child(pos))
+
+                else:
+                    self.swap(pos, self.right_child(pos))
+                    self.max_heapify(self.right_child(pos))
+
+    def insert(self, element):
+        if self.size >= self.maxsize:
+            return
+        self.size += 1
+        self.Heap[self.size] = element
+        current = self.size
+        while self.Heap[current] > self.Heap[self.parent(current)]:
+            self.swap(current, self.parent(current))
+            current = self.parent(current)
+
+    def print_heap(self):
+        for i in range(1, (self.size // 2) + 1):
+            print(" PARENT : " + str(self.Heap[i]) + " LEFT CHILD : " +
+                  str(self.Heap[2 * i]) + " RIGHT CHILD : " +
+                  str(self.Heap[2 * i + 1]))
+
+    def extract_max(self):
+        popped = self.Heap[self.FRONT]
+        self.Heap[self.FRONT] = self.Heap[self.size]
+        self.size -= 1
+        self.max_heapify(self.FRONT)
+        return popped
+
+```
