@@ -1,0 +1,226 @@
+---
+title: Graphs  
+date: "2021-07-26"
+description: "Binary Trees,Binary Heap"
+---
+# Graphs
+
+The graph is a data structure, in which different types of elements (data) that are used to process or to know for specific purposes are stored. 
+
+Additionally, these nodes can be linked or connected to other nodes through elements that we call edges.
+This data structure is recognized and widely used because it has a great capacity to handle high volumes of data and be easily processed by search engines or database managers. One of them can be <a href="https://neo4j.com/" class="link  white hover-white-60" target="_blank">Neo4j</a>
+
+This data structure can handle very simple data such as different clothes:
+
+<center>
+<img class="w-60-l w-80" src='https://imgur.com/7AacReB.png'></img>
+</center>
+
+Complex data such as citys of a country:
+<center>
+<img class="w-60-l w-80" src='https://imgur.com/M81CIls.png'></img>
+</center>
+
+or even super complex data types such as the internet:
+<center><img class="w-60-l w-80" src='https://imgur.com/rTLLW5b.png'></img></center>
+
+for more information about this last graph, see <a href="https://www.opte.org/the-internet" class="link  white hover-white-60" target="_blank">this link</a>
+
+this makes graphs highly utilized in the computer science.
+
+## Tipos de Grafos
+
+There are several types of graph but we can classify them in categories
+
+### Directed and Undirected graphs:
+
+<center>
+<img class="w-60-l w-80" src='https://imgur.com/SAeIwJV.png'></img>
+</center>
+
+- **Directed:** The directed graphs are those that present an orientation in the connection of the graphs, mostly this is represented graphically with arrows.
+
+- **UnDirected:** These graphs the edges do not have a defined sense so they are not necessarily symmetrical.
+
+### Weighted and unweighted graph
+
+-**Weighted Graph**
+
+<center>
+<img class="w-60-l w-80" src='https://imgur.com/E9WX4je.png'></img>
+</center>
+
+These graphs are used to represent complex social networks with valued relationships. This means that the edges have a cost, this cost can be represented by weight, lenght etc.
+
+Estos grafos se utilizan por ejemplo para representar las ciudades de un pais, relaciones sociales, etc
+
+-**UnWeighted Graph**
+
+Este grafo cada relacion o cada arista no tiene peso. Por lo que es facil de representar
+
+### Cyclic
+
+El Grafo se le dice ciclico si los unicos vertices repetidos son el primero y el ultimo
+<center>
+<img class="w-60-l w-80" src='https://imgur.com/03JWcDR.png'></img>
+</center>
+
+UN grafo sin ciclos se le denomina Acyclic y sin ciclos dirigidos se le llama Acyclico dirigido.  
+
+## Grafos especiales:
+
+- **Un grafo DAG**, El cual significa Directed Acyclic Graph: y como lo dice el nombre este grafo es un grafo dirigido y acyclico. Es muy utilizado en el mundo real y en la informatica
+<center>
+<img class="w-80-l w-80" src='https://imgur.com/mkkuJp6.png'></img>
+</center>
+Por ejemplo muchas criptomonedas utilizan este tipo de grafos y tienen la particularidad de que no existe la notacion de bloques ni se requiere minar
+
+<center>
+<img class="w-60-l w-80" src='https://imgur.com/lqAh9PB.png'></img>
+</center>
+
+- Existen tambien los grafos **No-directed acyclic** estos grafos los llamamos arboles, tambien son altamente utilizados en las ciencias de la computacion
+<center>
+<img class="w-60-l w-80" src='https://imgur.com/SI686hO.png'></img>
+</center>
+Este grafo puede tener un nodo root el cual desde ese punto se pueden llegar a los demas puntos 
+-out-tree: arborescence
+-in-Tree:  anti-arborescence
+<center>
+<img class="w-60-l w-80" src='https://imgur.com/wz56Sie.png'></img>
+</center>
+
+- **bipartite graps**: is a graph whose vertices can be divided into two independent sets, U and V such that every edge (u, v) either connects a vertex from U to V or a vertex from V to U. In other words, for every edge (u, v), either u belongs to U and v to V, or u belongs to V and v to U. We can also say that there is no edge that connects vertices of same set
+<center>
+<img class="w-60-l w-80" src='https://imgur.com/7AacReB.png'></img>
+</center>
+
+- **Complete Graphs**
+es un grafo donde cada vertice esta conectado con una arista*(is a graph thtat is ther vertices is connected with every arista)*
+<center><img class="w-60-l w-80" src='https://imgur.com/7AacReB.png'></img></center>
+
+
+## Methods to implement
+
+### Edge list
+
+esta es una forma de representar vertices adyacentes.
+
+```python
+edgeList = [
+	[1,2],
+	[2,3],
+	[3,1]
+]
+```
+
+Tiene pros y contras:
+
+**Pros:** 
+
+- es eficiente en el espacio con sparse graphs y facil de representar cada grafo
+- iterar sobre todos los nodos es eficiente
+- Es una estructura muy simple
+
+**Contras:**
+
+- Es menos eficiente en el espacio con denser graphs.
+- Edge weight lookup is O(E)
+
+<center><img class="w-60-l w-80" src='https://imgur.com/2BZnokr.png'></img></center>
+
+### Adjacent list (index of the array is the value of actual graph)
+
+Es similar a una edge list, pero a diferencia de esta el tamaño de arrays el numero de listas y su tamaño es igual al numero de vertices. Esta se utiliza en los graphs weighted.
+
+<center><img class="w-60-l w-80" src='https://imgur.com/AOKChNz.png'></img></center>
+
+```python
+class AdjNode:
+    def __init__(self, data):
+        self.vertex = data
+        self.next = None
+  
+  
+class Graph:
+    def __init__(self, vertices):
+        self.V = vertices
+        self.graph = [None] * self.V
+ 
+    def add_edge(self, src, dest):
+        node = AdjNode(dest)
+        node.next = self.graph[src]
+        self.graph[src] = node
+  
+        node = AdjNode(src)
+        node.next = self.graph[dest]
+        self.graph[dest] = node
+  
+    def print_graph(self):
+        for i in range(self.V):
+            print("Adjacency list of vertex {}\n head".format(i), end="")
+            temp = self.graph[i]
+            while temp:
+                print(" -> {}".format(temp.vertex), end="")
+                temp = temp.next
+            print(" \n")
+```
+
+Esta implementacion de grafo junto a adjacent matrix son las mas utilizadas, pero esta tiene pros y contras:
+
+**Pros:**
+
+- El espacio es eficiente para representar sparse graphs
+- iterar en todos los edges es eficiente
+
+**Cons:**
+
+- Menos espacio eficiente para grafos densos
+- edge weight lookup is O(n)
+- Es la representacion mas compleja de un grafo
+
+### Adjacent Matrix
+
+Una representacion de un grafo con la adjacent matrix es una matrix de booleanos en un computador, donde cada valor booleano indica si el valor que tiene cada direccion entre 2 vertices.
+
+
+Como cualquier representacion tiene pros y contras 
+
+**Pros:** 
+
+- es eficiente para representar grafos densos
+- para ver el peso de una direccion es de complejidad O(1)
+- es la representacion mas simple de un grafo
+
+**Cons:**
+
+- Requires O(n^2) de espacio
+- iterar todos los vertices va a tomar un O(n^2) de tiempo
+
+**Implementacion:**
+<center><img class="w-60-l w-80" src='https://imgur.com/1aGWGTU.png'></img></center>
+
+```python
+class Graph(object):
+
+    def __init__(self, size):
+        self.adjMatrix = []
+        for i in range(size):
+            self.adjMatrix.append([0 for i in range(size)])
+        self.size = size
+
+    def add_edge(self, v1, v2):
+        if v1 == v2:
+            print("Same vertex %d and %d" % (v1, v2))
+        self.adjMatrix[v1][v2] = 1
+        self.adjMatrix[v2][v1] = 1
+    def remove_edge(self, v1, v2):
+        if self.adjMatrix[v1][v2] == 0:
+            print("No edge between %d and %d" % (v1, v2))
+            return
+        self.adjMatrix[v1][v2] = 0
+        self.adjMatrix[v2][v1] = 0
+
+    def __len__(self):
+        return self.size
+```
