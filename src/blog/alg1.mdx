@@ -3,4 +3,77 @@ title: Recursion
 date: "2021-08-26"
 description: "Algorithm recursion"
 ---
+# Recursion.
+## What is recursion?
+
+Recursion consists of functions that call themsellves, avoiding the use of loops and other iterators.  That is to say when you call the function it call
+
+<center>
+<img src="https://wewrite.taleas.io/wp-content/uploads/2018/11/cnnv-nv-768x614.jpg"></img>
+</center>
+
+
+### Factorial
+
+A good way to understand recursion and how it works is with examples and a good example is the factorial
+
+### Examples:
+
+```python
+def factorial(n):
+	if n==1:
+		return 1
+	else:
+return factorial(n-1)*n
+```
+
+What this does is that when having the factorial it calls the function again and again but each time being the smaller number. If the number reaches 1 it returns 1. so this 1 is multiplied by each one of the times and the numbers by which it passed until arriving to the last one.
+
+### Fibonacci
+
+Another great example is the fibonacci function.
+
+the fibonacci sequence is a sequence which starts with 0 and 1. And to find more numbers that belong to the sequence you will have to add the 2 previous numbers, ie.
+
+**0,1,1,2,3,5**
+
+since 0+1 is 1 and in position 4 it would be 1+1 which is 2 so formally the number of position n would be the number of position n-2 plus the number of position n-1
+
+```python
+def fibo(n):
+   if n <= 1:
+       return n
+   else:
+       return(fibo(n-1) + fibo(n-2))
+```
+
+## **PROS AND CONS**
+
+As you can see recursion is easy to understand but if one looks at it more closely one can see that everything can be done with cycles. and in some cases it is more efficient. for example the case of the factorial would be:
+
+```python
+def factorial(n):
+	r=1
+		for i in range(2,n):
+			r= i*r
+	return r	
+```
+
+**Then why do we use recursive functions?**
+
+One of the main reasons is because it is more readable and dry.
+
+**Why not use them**
+
+Most programming languages every time a function is called inside another function it is executed in something called a stack.
+
+When the stack fills up (stack overflow) it can generate the closing of the program so that for uses that require a very high cycle it is generally better to use cycles
+
+A solution for this is **tail call optimization**
+
+## When to use recursion
+
+Recursion is very useful when there is no simple iterative solution. For example,complicated problems like traversing or searching for a node in a graph or a tree, or sorting by merge sort or quick sort.
+
+A very interesting thing is that divide and conquer is considered as recursion.
 

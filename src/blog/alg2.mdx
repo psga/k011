@@ -1,0 +1,172 @@
+---
+title: Sorting algorithms  
+date: "2021-08-26"
+description: "Bubble sort .o0"
+---
+# Sorting algorithms
+Sorting algorithms are the methods of reorganize a large numbers of items into some order, the relation of order most common items are the numbers order or lexicgraphic order
+
+## What is it used for?
+
+The sorting algothims can be seen in companies like Google, Amazon, Apple. are highly used in data. Some examples can we see is:
+
+- Order a list of products or clients by name
+- Order a list of products by prices
+- Order a list by size
+
+the most of the programming lenguages have a function prederterminate to sorting elements, but has a problem:
+
+**the issue with sort():** By not knowing wich algorithm we are using, we can have a problems. like in js the sort() method order elements by their unicode value, this implies that (3,1,22,100)—>(1,100,22,3).
+
+
+[https://www.toptal.com/developers/sorting-algorithms](https://www.toptal.com/developers/sorting-algorithms)
+
+## Algoritms:
+
+Exist a large sorting algorithms, that we can see them in [https://en.wikipedia.org/wiki/Sorting_algorithm](https://en.wikipedia.org/wiki/Sorting_algorithm). all of these have their advantages and disavantages.
+
+### Complexity
+<center>
+<img src="https://imgur.com/A3hjDiv.jpg"></img>
+</center>
+
+# Comparison sort
+
+## Burble sort
+
+the burble sort algortithm no have any situation practical. no situation in whitch we should use it.
+
+Is very easy to implemet
+
+```python
+def bubbleSort(arr):
+    n = len(arr)
+    for i in range(n-1):
+        for j in range(0, n-i-1):
+              if arr[j] > arr[j + 1] :
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+```
+
+<center>
+<img src="https://imgur.com/QHhRBTv.gif"></img>
+</center>
+## Selection sort
+
+This one has no practical use, as above
+
+likewise, this is very easy to implement 
+
+```python
+def selection_sort(L):
+    for i in range(len(L)-1):
+        min_index = i
+        for j in range(i+1, len(L)-1):
+            if L[j] < L[min_index]:
+                min_index = j
+        L[i], L[min_index] = L[min_index], L[i]
+```
+
+![ezgif-3-caef494895c3.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/44b9a94a-132c-49fa-b470-82c20da2b607/ezgif-3-caef494895c3.gif)
+
+## Insertion sort
+
+```python
+def insertionSort(arr):
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = i-1
+        while j >= 0 and key < arr[j] :
+                arr[j + 1] = arr[j]
+                j -= 1
+        arr[j + 1] = key
+```
+
+This and the following 3 algorithms are part of the divide-and-conquer algorithms
+
+![ezgif-6-c85b03b966df.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/95d3f5b1-f5cd-4169-b370-fbb31233201d/ezgif-6-c85b03b966df.gif)
+
+## Merge Sort
+
+```python
+def mergeSort(arr):
+    if len(arr) > 1:
+        mid = len(arr)//2
+        L = arr[:mid]
+        R = arr[mid:]
+        mergeSort(L)
+        mergeSort(R)
+        i = j = k = 0
+        while i < len(L) and j < len(R):
+            if L[i] < R[j]:
+                arr[k] = L[i]
+                i += 1
+            else:
+                arr[k] = R[j]
+                j += 1
+            k += 1
+        while i < len(L):
+            arr[k] = L[i]
+            i += 1
+            k += 1
+ 
+        while j < len(R):
+            arr[k] = R[j]
+            j += 1
+            k += 1
+```
+
+![ezgif-6-3b254cd4fd70.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/10ab1abb-6d1f-4edc-86df-89c6152ced85/ezgif-6-3b254cd4fd70.gif)
+
+## Quick Sort
+
+```python
+def partition(arr, low, high):
+    i = (low-1)
+    pivot = arr[high]
+  
+    for j in range(low, high):
+        if arr[j] <= pivot:
+            i = i+1
+            arr[i], arr[j] = arr[j], arr[i]
+  
+    arr[i+1], arr[high] = arr[high], arr[i+1]
+    return (i+1)
+def quickSort(arr, low, high):
+    if len(arr) == 1:
+        return arr
+    if low < high:
+        pi = partition(arr, low, high)
+        quickSort(arr, low, pi-1)
+        quickSort(arr, pi+1, high)
+```
+
+![ezgif-6-34f30afce070.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2336c5b3-fb31-4046-adcb-6cca6e0dd818/ezgif-6-34f30afce070.gif)
+
+## Heap sort
+
+![ezgif-6-1cc95b60039a.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ca923f8e-94cc-4b43-8f6d-b52766ffccdc/ezgif-6-1cc95b60039a.gif)
+
+Heapsort is a non-recursive, non-stable, non-recursive sorting algorithm with computational complexity O(logn).
+
+```python
+def heapify(arr, n, i): #
+    largest = i 
+    l = 2 * i + 1
+    r = 2 * i + 2
+    if l < n and arr[i] < arr[l]:
+        largest = l
+    if r < n and arr[largest] < arr[r]:
+        largest = r
+    if largest != i:
+        arr[i],arr[largest] = arr[largest],arr[i] 
+        heapify(arr, n, largest)
+def heapSort(arr):
+    n = len(arr)
+    for i in range(n // 2 - 1, -1, -1):
+        heapify(arr, n, i)
+    for i in range(n-1, 0, -1):
+        arr[i], arr[0] = arr[0], arr[i] 
+        heapify(arr, i, 0)
+```
+
+# Non-Comparison sorting Algorithms
