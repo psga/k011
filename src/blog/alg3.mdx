@@ -5,7 +5,7 @@ description: "BFS & DFS"
 ---
 
 
-# Linear Search
+## Linear Search
 linear search or sequence search is a method of finding a target value within the list.
 It consist of going through and examing each of the elements of the array until we find the element(s) we are looking for, or until we have looked at all the elements of the array.
 
@@ -15,7 +15,7 @@ This is the slowest search method, but if our information is completely disorder
 <img class="w-60-l " src='https://imgur.com/9UaTiEP.gif'></img>
 </center>
 
-# Binary Search
+## Binary Search
 Binary search works on ordered arrays. It consists of eliminating half of the elements of the array on which the search is performed after each comparison, it starts comparing the elements in te middle of the array with the searched value. If the searched value is equal to the middle element, its position in the array is returned. if the searched value is less or greater than the middle element, the search will cotinue in the first or second half, respectively, leaving the other half out of consideration; and if they are equal, the searched value has been found and the position is returned
 would function as a binary tree
 
@@ -23,16 +23,39 @@ would function as a binary tree
 <img class="w-60-l " src='https://imgur.com/yWJHmFH.gif'></img>
 </center>
 
-## Graph / Tree  traversal 
+# Graph / Tree  traversal 
 In an unordered tree or in a network how can we search for items?. For this there are 2 algorithms:
 
 <center>
 <img class="w-60-l " src='https://imgur.com/XGy4i4e.gif'></img>
 </center>
 
-### Breadth First Search
+## Breadth First Search
 
 Is another technique for traversing a graph. BFS visits the sibling vertices before visiting the child vertices, and a queue is used in the search process. this algorithm is ofted used to find the shortest path from one vertex to another.
+```python
+class Graph:
+    def __init__(self):
+        self.graph = defaultdict(list)
+    def addEdge(self,u,v):
+        self.graph[u].append(v)
+ 
+    def BFS(self, s):
+ 
+        visited = [False] * (max(self.graph) + 1)
+        queue = []
+ 
+        queue.append(s)
+        visited[s] = True
+        
+        while queue:
+            s = queue.pop(0)
+            print (s, end = " ")
+            for i in self.graph[s]:
+                if visited[i] == False:
+                    queue.append(i)
+                    visited[i] = True
+```
 
 #### PROS AND CONS
 
@@ -42,10 +65,31 @@ This algorithm is used when the location of the node is believed to be at a high
 - **Cons**: More memory
 
 
-### Depth First Search
+## Depth First Search
 
 this algorithm visits the child vertices before visiting the sibling vertices.
 The algorithm begins with a chosen "root" vertex; it then iteratively transitions from the current vertex to an adjacent, unvisited vertex, until it can no longer find an unexplored vertex to transition to from this current location
+
+```python
+class Graph:
+    def __init__(self):
+        self.graph = defaultdict(list)
+  
+    def addEdge(self, u, v):
+        self.graph[u].append(v)
+  
+    # A recursive function used by DFS
+    def DFSUtil(self, v, visited):
+        visited.add(v)
+        print(v, end=' ')
+        for neighbour in self.graph[v]:
+            if neighbour not in visited:
+                self.DFSUtil(neighbour, visited)
+  
+    def DFS(self, v):
+        visited = set()
+        self.DFSUtil(v, visited)
+```
 #### PROS AND CONS
 
 This algorithm is used when the location of the node is believed to be at a low level, it is  located above.
@@ -53,4 +97,7 @@ This algorithm is used when the location of the node is believed to be at a low 
 - **Pros**: Less Memory, Does path Exist?
 - **Cons**: Can get slow
 
+# Shortest path
+## Dijkstra
+## Bellman
 
