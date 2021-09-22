@@ -1,0 +1,42 @@
+---
+title: Dinamic Programming  
+date: "2021-08-26"
+description: "Memoization,fibonacci"
+---
+
+The idea of dynamic programming is to use obtained solutions to calculate the initial problem, not to calculate the same thing twice,and to normally use a table of results that is filled in as the sub-examples are solved.
+Dynamic programming is a bottom-up approach. The smallest and therefore simplest sub-examples are solved first. By combining the solutions, the solutions of successively larger specimens are obtained until the original specimen is reached.
+
+Let's see an example using memoization:
+When we calculate the fibonacci using recursion for very large numbers it becomes very complex and slow. Since the same operation can be computed several times, we can see this in a graph:
+
+
+
+<center>
+<img class="w-80-l" src='https://imgur.com/OCFgpbb.png'></img>
+</center>
+
+This can be optimized with dynamic programming by using memoization, i.e. making a cache which stores the operations for later use.
+```python
+f = [0, 1]
+def Fibonacci(n):              
+    if len(f)>n:
+        return f[n]
+    else:
+        print(f"calculando fibonacci {n}")
+        f.append(Fibonacci(n-1)+Fibonacci(n-2))
+        print(f)
+        return Fibonacci(n-1)+Fibonacci(n-2)
+```
+But we see that this can be improved, because with dynamic programming in this algorithm we do not need recursion, so we use a cycle
+
+
+```python
+
+def Fibonacci(n):
+    f = [0, 1]
+    for i in range(2, n+1):
+        f.append(f[i-1] + f[i-2])
+    return f[n]
+
+```
