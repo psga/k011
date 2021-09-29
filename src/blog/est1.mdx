@@ -1,0 +1,61 @@
+---
+title: Normal Distribution  
+date: "2021-01-01"
+description: "Binary Trees,Binary Heap"
+---
+
+
+
+# Normal Distribution
+-__<a href="https://www.desy.de/~sschmitt/blobel/blobel_errors.pdf" class="link  white hover-white-60" target="_blank">Error</a>__ The difference between a data point and a predicted or average value
+
+-__<a href="https://statisticsbyjim.com/glossary/standardization/" class="link  white hover-white-60" target="_blank">Standardize</a>__ Subtract the mean and divide by the standard deviation   	
+
+-__<a href="https://www.statisticshowto.com/probability-and-statistics/z-score/" class="link  white hover-white-60" target="_blank">z-score</a>__ the result of standardizing an individual data point
+
+-__<a href="https://sphweb.bumc.bu.edu/otlt/mph-modules/bs/bs704_probability/bs704_probability9.html" class="link  white hover-white-60" target="_blank">standard normal</a>__ A normal distribution with mean = 0 and standard deviation = 1
+
+-__<a href="https://neo4j.com/" class="link  white hover-white-60" target="_blank">QQ plot</a>__ A plot to visualize how close a sample distribution is to a specified distribution, e.g., the normal distribution.
+
+
+A standard normal distribution is one in which the units on the x-axis are expressed in terms of standard devitions away from the mean. To compare data to a standard normal distribution, you subtract the mean and then divide by the standar deviation(_normalization_ or _standardization_)
+
+
+A QQ-Plot is used to visually determine how close a sample is to a specified distribution-In this case, the normal distribution
+```cpp
+fig,ax =plt.subplots(figsize=(4,4))
+norm_sample=stats.norm.rvs(size=100)
+stats.probplot(norm_sample,plot=ax)
+```
+with the method scipy.stats.probplot
+
+<center>
+<img class="w-40-l w-80" src='https://imgur.com/Th0QRF0.png'></img>
+
+Quantile of normal distribution
+</center>
+
+
+# Long-Tailed Distributions
+The long tail is the colloquial name for a well-known feature of statistical distributions (Zipf, power-law, Pareto distributions and in general Lévy distributions). The feature is also known as heavy tails, power-law tails, or Pareto tails. These distributions are similar to the graph that accompanies these lines.
+In these distributions a large frequenct or high frecuency of "transactions" is followed by a low frequency or low amplitude of the gradually decreasing population. In many cases, the low frequency or low amplitude events-the long tail, represented here by the yellow portion of the graph-may comprise most of the graph
+
+While the normal distribution is often appropiate and useful with respect to the distribution of errors and sample statistics, it typically does not characterize the distribution of raw data; or the distribution can be discrete, as with binomial data.
+```cpp
+nflx = sp500px.NFLX
+nflx = np.diff(np.log(nflx[nflx>0]))
+fig,ax = plt.subplots(figsize=(4,4))
+stats.probplot(nflx,plot=ax)
+```
+__RR__.
+<a href="https://en.wikipedia.org/wiki/The_Black_Swan:_The_Impact_of_the_Highly_Improbable" class="link  white hover-white-60" target="_blank">The black swan</a> ||| <a href="https://www.routledge.com/Handbook-of-Statistical-Distributions-with-Applications/Krishnamoorthy/p/book/9780367658700" class="link  white hover-white-60" target="_blank">SDWA</a>
+
+# Student's t-Distribution
+
+In probability and statistics, Student's  t-distribution is a probability distribution that arises from the problem of estimating the mean of a normally distributed population when the sample size is small and the population standard deviation is unknown.
+
+It appears naturally when performing Student's t-test for the determination of the differences between the parts of two populations when the standard deviation of a population is unknown and must be estimated from sample data.
+
+-__<a href="https://en.wikipedia.org/wiki/Long_tail" class="link  white hover-white-60" target="_blank">Degrees of freedom</a>__ A parameter that allows the t-distribution to adjust to different sample sizes, statistics, and number of groups 
+
+https://imgur.com/o1GRreU.png
