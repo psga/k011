@@ -47,8 +47,11 @@ nflx = np.diff(np.log(nflx[nflx>0]))
 fig,ax = plt.subplots(figsize=(4,4))
 stats.probplot(nflx,plot=ax)
 ```
-__RR__.
+.
+
+<center>
 <a href="https://en.wikipedia.org/wiki/The_Black_Swan:_The_Impact_of_the_Highly_Improbable" class="link  white hover-white-60" target="_blank">The black swan</a> ||| <a href="https://www.routledge.com/Handbook-of-Statistical-Distributions-with-Applications/Krishnamoorthy/p/book/9780367658700" class="link  white hover-white-60" target="_blank">SDWA</a>
+</center>
 
 # Student's t-Distribution
 
@@ -56,6 +59,24 @@ In probability and statistics, Student's  t-distribution is a probability distri
 
 It appears naturally when performing Student's t-test for the determination of the differences between the parts of two populations when the standard deviation of a population is unknown and must be estimated from sample data.
 
--__<a href="https://en.wikipedia.org/wiki/Long_tail" class="link  white hover-white-60" target="_blank">Degrees of freedom</a>__ A parameter that allows the t-distribution to adjust to different sample sizes, statistics, and number of groups 
+differences in averages
 
-https://imgur.com/o1GRreU.png
+- __<a href="https://en.wikipedia.org/wiki/Long_tail" class="link  white hover-white-60" target="_blank">Degrees of freedom</a>__ A parameter that allows the t-distribution to adjust to different sample sizes, statistics, and number of groups 
+
+
+<center>
+<img class="w-40-l w-80" src='https://imgur.com/o1GRreU.png'></img>
+</center>
+
+.
+
+<center>
+<a href="https://onlinestatbook.com/2/estimation/t_distribution.html" class="link  white hover-white-60" target="_blank">the standard treatment</a> ||| <a href="http://seismo.berkeley.edu/~kirchner/eps_120/Odds_n_ends/Students_original_paper.pdf" class="link  white hover-white-60" target="_blank">Original paper</a>
+</center>
+
+# Binomial Distribution
+- __Trial__ An event with a discrete outcome.
+- __Succes (i)__ The outcome of interest for a trial.
+- __Binomial__ Having two outcomes.
+- __Binomial trial (Bernoulli trial)__ A trial with two outcomes
+- __Binomial Distribution (Bernoulli Distribution)__ Distribution of number of successes in x trials 
