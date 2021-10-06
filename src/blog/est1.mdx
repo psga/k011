@@ -80,3 +80,16 @@ differences in averages
 - __Binomial__ Having two outcomes.
 - __Binomial trial (Bernoulli trial)__ A trial with two outcomes
 - __Binomial Distribution (Bernoulli Distribution)__ Distribution of number of successes in x trials 
+
+Fundamental to understanding the binomial distribution is the idea of a set of trials, each of which has two possible outcomes with defined probabilities.For example, flippping a coin 10 times is a binomial experiment with 10 trials, each trial having two possible outcomes(heads or tails);Such yes/no or 0/1 outcomes are termed binary outcomes, and they need not have 50/50 probabilities. 
+The binomial distribution is the frequency distribution of the number of successes (x) in a given number of trials(n) with specified probability (p) of success in each trial. There is a family of binomial distribution, depending on the values of n and p. The binomial distribution would answer question like:
+
+Binomial outcomes are important to model,since they represent, among other things, fundamental decisions(buy or don't buy, click or don't click, survive or die, etc.).
+with a large n, and provided p is not too close to 0 or 1, the binomial distribution can be approximated by the normal distribution.
+
+The __scipy.stats__ module implements a large variety of statistical distributions. For the binomial distribution, use the functions stats.binom.pmf and stats.binom.cdf
+```cpp
+stats.binom.pmf(2, n=5, p=0.1)
+
+stats.binom.cdf(2, n=5, p=0.1)
+```
