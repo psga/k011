@@ -116,10 +116,40 @@ __ <a href="https://books.google.com.co/books/about/Introduction_to_Design_and_A
 </center>
 
 # Poisson and related Distributions
-- __lambda__
 
-- __ Poisson distribution__
-- __ Exponential distribution __
-- __ Weibull distribution __
+Many processes produce events randomly at a given overall rate
+
+- __lambda__ The rate(per unit of time or space) at which avents occur
+- __ Poisson distribution__ The frequency distribution of the number of events in sampled units of time or space
+- __ Exponential distribution __ The frequency distribution of the time or distance from one event to the next event
+- __ Weibull distribution __ A generalized version of the exponential distribution in which the event rate is allowed to shift over time
+
+.For events that occur at a constant rate, the number of events per unit of time or space can be codeled as a poisson distribution.
+.You can also model the time or distance between one event and the next as an exponential distribution
+.A changing event rate over time can be modeled with the weibull distribution.
+
+
+## Poisson Distributions
+The Poisson distribution tells us the distribution of events per unit of time or space when we sample many such units
+The key parameter in a Poisson distribution is $\lambda$. This is the mean number of events thtat occurs in a specified interval of time or space.(The variance for a poisson distribution is also \lambda)
+
+```cpp
+stats.poisson.rvs(2,size=100)
+```
+## Exponential distribution
+Using the same parameter $\lambda$ that we used in the Poisson distribution, we can also model the distribution of the time between events.
+```cpp
+stats.expon.rvs(0.2,size=100)
+```
+A key assumption in any simulation study for either the poisson or exponential distribution is that the rate, $\lambda$, remains constants over the period being considered. This is rarely reasonable in a global sense; for example, traffic on roads or data networks varies by time of day and day of week.
+## Estimating the Failure Rate
+The event rate $\lambda$ is known or can be estimated from a prior data.If there is some data but not enough to provide a precise, reliable estimate of the rate, a goodness-of-fit test can be applied to various rate to determine how well they fit the observed data.
+
+## Weibull Distribution
+The wibull distribution is an extension of the exponential distribution in which the event rate is allowed to change, as specified by a shape parameter $\Beta$.If beta>1,the probability of an event increases over time; if $\beta$<1, the probability decreases. Because the Weibull distribution is used with time-to-failure analysis instead of event rate,the sesecond parameter is expresed in terms of characteristic life, rather than in terms of the rate of events per intervales.the symbol used is $\eta$ scale parameter.
+
+<center>
+<a href="https://www.amazon.com/-/es/Thomas-P-Ryan/dp/0470081872" class="link  white hover-white-60" target="_blank">Modern Engineering Statistics </a> ||| <a href="http://seismo.berkeley.edu/~kirchner/eps_120/Odds_n_ends/Students_original_paper.pdf" class="link  white hover-white-60" target="_blank">Original paper</a>
+</center>
 
 
