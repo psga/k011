@@ -1,6 +1,6 @@
 ---
 title: Stats Testing  
-date: "2021-01-01"
+date: "2021-11-01"
 description: "Statistical Experiments and significance testing"
 ---
 
@@ -18,7 +18,6 @@ Subjects are assigned to two (or more) groups that are treated exactly alike, ex
 Ideally, subjects are assigned randomly to the groups
 
 <center>
-
 __ <a href="https://optimize.google.com/" class="link  white hover-white-60" target="_blank">Google Optimize</a> __
 
 </center>
@@ -59,9 +58,37 @@ Resampling means to repeatedly sample values from observed data, with a general 
 
 Drawind  additional samples from an observed data set
 
-there are two main types of resampling procedures
+there are two main types of resampling procedures: bootstrap and permutation tests.
+
 __ Permutation test __: also called randomization test,random permutation test, exact test
 The procedure of combining two or more samples together and randomly reallocating the observation to resamples..
 - combine the results from the different groups into a single data set.
 - Shuffle the combined data and then dandomly draw a resample of the same size as group A
 - From the remaining data, randomly draw a resample of the same size as group B
+
+__Exhaustive and Bootstrap Permutation Test __:
+In addition to the preceding random shuffling procedure, also called a random per‐ mutation test or a randomization test, there are two variants of the permutation test:
+- Exhaustive permutation test: just randomly shuffling and dividing the data, we actually figure out all the possible ways it could be divided. This is practical only for relatively small sample sizes. This is also called _Exact test_
+- A bootstrap permutation test: In this way the resampling procedure models not just the random element in the assigment of treatment to subject but also the random element in the section of subjects from a population. 
+__Permutation tests__:
+Permutation tests are useful heuristic procedures for exploring the role of random variation. They are relatively easy to code, interpret, and explain, and they offer a use‐ ful detour around the formalism and “false determinism” of formula-based statistics, in which the precision of formula “answers” tends to imply unwarranted certainty.
+In a permutation test, are multiple samples are combined and then shuffled.
+The shuffled values are then divided into resamples, and the statistics of interest is calculated
+
+<center>
+
+__ <a href="https://www.amazon.com/-/es/Peter-C-Bruce/dp/1118881354" class="link  white hover-white-60" target="_blank">Introductory Statistics and Analytics</a> __
+
+</center>
+
+### Statistical Significance and p-Values
+Statistical significance is how statisticians measure whether an experiment (or even a study of existing data) yields a result more extreme than what chance might produce. If the result is beyond the realm of chance variation, it is said to be statistically signicant
+- __ p-value __; given a chance model that embodies the null hypothesis, the p-value is the probability of obtaining results as unusual or extreme as the observed results
+- __ Alpha __ The probability threshold of "unusualness" that chance results must surpass for actual outcomes to be deemed statistically significant
+- __ Type 1 error__ Mistakenly concluding an effect is real (when it is due to chance)
+- __ Type 2 error__ Mistakenly concluding an effect is due to chance (when it is real)
+- __ __
+
+
+
+

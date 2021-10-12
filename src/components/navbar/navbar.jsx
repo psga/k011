@@ -20,7 +20,7 @@ const Navbar = ({ siteTitle, latestSlug }) => {
         </div>
         <div className="fr ml-auto">
           <div className="flex flex-row">
-            <a href="https://pusu.ga" className="no-underline white-80 hover-white-50">
+            <a href="http://0usu.ga" className="no-underline white-80 hover-white-50">
               About
             </a>
             <p className="white mv0 f6 mh2">|</p>
