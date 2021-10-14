@@ -90,10 +90,24 @@ Statistical significance is how statisticians measure whether an experiment (or 
 - __Data science and p-values__ For a data scientist,a p-value iis a useful metric in sutitations where you want to know whether a model result that appears interesting and useful is within the range of normal chance variability
 
 Significance test are used to determine whether an observed effect is within the range of chance variation for a null hypothesis model. the testing has been much more relevant for formal reporting of research than for data science
+
 ### t-Test
+A significance tests, depending on whether the data comprises count data or measured data, how many samples there are,and what's being measured. That is, a standardized version of common test statistics such as means
+
+### Multiple testing:
+_"Torture the data long enough, and it will confess."_
+
+For situations involving multiple statistical comparison, there are statistical adjustment procedures.
+- __ Type 1 error __ Mistakenly concluding that an effect is statistically significant
+- __ False discovery rate __ Across multiple test, the rate of making a Type 1 error.
+- __ Alpha inflation __ The multiple testing phenomenon, in which _alpha_, the probability of making a Type 1 error, increases as you conduct more tests
+- __ Adjustment of p-values __ Accounting for doing multiple tests on the same data
+- __ Overfitting__ Fitting the noise
+- __ alpha inflation__ The probability taht at least one predictor will (falsely) test significant is the flip side of this probability ,or 1-(_Probability that all will be nonsigninicant_)This issue is related to the problem of overfitting in data mining, or "fitting the model to the noise."
 
 
+<center>
 
+__ <a href="https://www.amazon.com/-/es/Peter-H-Westfall/dp/0471557617" class="link  white hover-white-60" target="_blank">Resampling‑Based Multiple Testing</a> __
 
-
-
+</center>
