@@ -7,8 +7,7 @@ description: "REGRESSION"
 Simple Linear Regression Simple linear regression provides a model of the relationship between the magnitude of one variable and that of a second for example, as X increases, Y also increases. Or as X increases, Y decreases.1 Correlation is another way to measure how two variables are related see. Stimates how much Y will change when X changes by a certain amount. With the correlation coefficient, the variables X and Y are interchangeable, With regression, we are trying to predict the Y variable from X using a linear relationship
 
 $$Y_{i}=b_{0}+b_{1}X_{i}+e_{i}$$
-
-$$\hat{Y}_{i}=\hat{b}_{0}+\hat{b}_{1}X_{i}$$
+$$Y_{i}=b_{0}+b_{1}X_{i}+e_{i}$$
 
 - __Response__ The variable we are trying to predict.
  _Synonyms dependent variable, Y variable, target, outcome_
@@ -34,39 +33,32 @@ _Synonym errors_
 - __Least squares__ The method of fitting a regression by minimizing the sum of squared residuals.
 _Synonym Ordinary least squares, OLS_
 
-## Multiple Linear Regression
-All of the other concepts in simple linear regression, such as fitting by least squares and the definition of fittied values and residuals,extend to the multiple linear regression setting.
+## Multiple linear Regression
+- __Least squares__ The method of fitting a regression by minimizing the sum of squared residuals.
+ - __Root mean squared error__
+The square root of the average squared error of the regression (this is the most widely used metric to compare regression models).
+ Synonym RMSE
 
-$$Y=b_{0}+b_{1}X_{1}+b_{2}X_{2}+b_{3}X_{3}+...+b_{p}X_{p}+e_{i}$$
+ - __Residual standard error__
+ The same as the root mean squared error, but adjusted for degrees of freedom. Synonym RSE
 
-- __Root mean squared error__ The square root of the average squared error of the regression. _RMSE_
-- __Residual standard error__ The same as the root mean squared error, but adjusted for degrees of freedom. _RSE_
-- __R-squared__ The proportion of variance explained by the model, from 0 to 1 _coefficient of determination_
-- __t-statistic__ The coefficient for a predictor,divided by the standard error of the coefficient,giving a metric to compare the importance of variables in the model. See "t-Tests"
-- __Weighted regression__ Regression with the records having different weights
-scikit-learn's LinearRegression can be used for multiple linear regression as well:
-``` cpp
-predictors=['SqFtTotLiving','SqFtLot','Bathrooms','Bedrooms','BldgGrade']
-outcome = 'AdjSalePrice'
-house_lm = LinearRegression()
-house_lm.fit(house[predictors],house[outcome])
-``` 
-```cpp
-house_lm
-Call:
-lm(formula = AdjSalePrice ~ SqFtTotLiving + SqFtLot + Bathrooms +Bedrooms + BldgGrade, data = house, na.action = na.omit)
-Coefficients:
-(Intercept)      SqFtTotLiving        SqFtLot              Bathrooms
--5.219e+05       2.288e+02            -6.047e-02           -1.944e+04      
-Bedrooms      BldgGrade
--4.777e+04      1.061e+05
-```
+ - __R-squared__
+ The proportion of variance explained by the model, from 0 to 1. 
+Synonyms coefficient of determination, R2
 
-$$
-R M S E=\sqrt{\frac{\sum_{i=1}^{n}\left(y_{i}-\hat{y}_{i}\right)^{2}}{n}}
-$$
+ - __t-statistic__
+ The coefficient for a predictor, divided by the standard error of the coefficient, giving a metric to compare the importance of variables in the model. See “t-Tests” on page 110.
 
-$$
-R S E=\sqrt{\frac{\sum_{i=1}^{n}\left(y_{i}-\hat{y}_{i}\right)^{2}}{(n-p-1)}}
-$$
+ - __Weighted regression__
+ Regression with the records having different weights.
 
+
+The primary purpose of regression in data science is prediction. This is useful to keep in mind, since regression, being an old and established statistical method, comes with baggage that is more relevant to its traditional role as a tool for explanatory modeling
+ -__Dummy variables__
+Binary 0–1 variables derived by recoding factor data for use in regression and other models. 
+ -__Reference coding__
+ The most common type of coding used by statisticians, in which one level of a factor is used as a reference and other factors are compared to that level. Synonym treatment coding 
+ -__One hot encoder__
+ A common type of coding used in the machine learning community in which all factor levels are retained. While useful for certain machine learning algorithms, this approach is not appropriate for multiple linear regression. 
+-__Deviation coding __
+A type of coding that compares each level against the overall mean as opposed to the reference level. Synonym sum contrasts Dummy Variables Representation
