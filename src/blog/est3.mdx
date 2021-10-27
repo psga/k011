@@ -54,11 +54,58 @@ Synonyms coefficient of determination, R2
 
 
 The primary purpose of regression in data science is prediction. This is useful to keep in mind, since regression, being an old and established statistical method, comes with baggage that is more relevant to its traditional role as a tool for explanatory modeling
- -__Dummy variables__
+
+## Factor Variables 
+
+ - __Dummy variables__
 Binary 0–1 variables derived by recoding factor data for use in regression and other models. 
- -__Reference coding__
+
+ - __Reference coding__
  The most common type of coding used by statisticians, in which one level of a factor is used as a reference and other factors are compared to that level. Synonym treatment coding 
- -__One hot encoder__
+
+ - __One hot encoder__
  A common type of coding used in the machine learning community in which all factor levels are retained. While useful for certain machine learning algorithms, this approach is not appropriate for multiple linear regression. 
--__Deviation coding __
+
+- __Deviation coding __
 A type of coding that compares each level against the overall mean as opposed to the reference level. Synonym sum contrasts Dummy Variables Representation
+
+## Interpreting Regression Equation 
+
+ - __Correlated variables __
+When the predictor variables are highly correlated, it is difficult to interpret the individual coefficients. 
+
+ - __Multicollinearity__
+ When the predictor variables have perfect, or near-perfect, correlation, the regression can be unstable or impossible to compute. Synonym collinearity 
+
+ - __Confounding variables __
+An important predictor that, when omitted, leads to spurious relationships in a regression equation. 
+
+ - __Main effects __
+The relationship between a predictor and the outcome variable, independent of other variables. 
+
+ - __Interactions __
+An interdependent relationship between two or more predictors and the
+
+## Regression Diagnostics 
+
+ - __Standardized residuals __
+Residuals divided by the standard error of the residuals. 
+
+ - __Outliers __
+Records (or outcome values) that are distant from the rest of the data (or the pre‐ dicted outcome). 
+
+ - __Influential value __
+A value or record whose presence or absence makes a big difference in the regression equation. 
+
+ - __Leverage __
+The degree of influence that a single record has on a regression equation. Synonym hat-value 
+
+ - __Non-normal residuals __
+Non-normally distributed residuals can invalidate some technical requirements of regression but are usually not a concern in data science. 
+
+ - __Heteroskedasticity __
+When some ranges of the outcome experience residuals with higher variance (may indicate a predictor missing from the equation). 
+
+ - __Partial residual plots__ 
+A diagnostic plot to illuminate the relationship between the outcome variable
+
