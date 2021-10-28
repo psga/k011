@@ -109,3 +109,25 @@ When some ranges of the outcome experience residuals with higher variance (may i
  - __Partial residual plots__ 
 A diagnostic plot to illuminate the relationship between the outcome variable
 
+## Polynomial and Spline Regression
+
+Polynomial regression involves including polynomial terms in a regression equation. The use of polynomial regression dates back almost to the development of regression itself with a paper by Gergonne in 1815. For example, a quadratic regression between
+
+ - __Polynomial regression __
+Adds polynomial terms (squares, cubes, etc.) to a regression. 
+ - __Spline regression __
+Fitting a smooth curve with a series of polynomial segments. 
+ - __Knots __
+Values that separate spline segments. 
+ - __Generalized additive models __
+Spline models with automated selection of knots. Synonym GAM
+
+```cpp
+predictors = ['SqFtTotLiving', 'SqFtLot', 'Bathrooms',  'Bedrooms', 'BldgGrade'] 
+outcome = 'AdjSalePrice'
+X = house_98105[predictors].values 
+y = house_98105[outcome] 
+
+gam = LinearGAM(s(0, n_splines=12) + l(1) + l(2) + l(3) + l(4))   
+gam.gridsearch(X, y)
+```
