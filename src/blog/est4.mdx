@@ -3,8 +3,31 @@ title: Classification
 date: "2021-11-03"
 description: "Naive Bayes, Discriminant Analysis, Logistic Regression"
 ---
-#Classification
+# Classification
+1. Establish a cutoff probability for the class of interest, above which we consider a record as belonging to that class. 
+
+2. Estimate (with any model) the probability that a record belongs to the class of interest. 
+
+3. If that probability is above the cutoff probability, assign the new record to the class of interest.
+
 
 ## Naive Bayes
-:w
+Naive bayes works with categorical (factor) prefictors and outcomes.
+It asks, "Within each outcome category, which predictor categories are most probable?"
 
+
+```cpp
+predictors = ['purpose_', 'home_', 'emp_len_']
+outcome = 'outcome'
+X = pd.get_dummies(loan_data[predictors], prefix='', prefix_sep='')
+y = loan_data[outcome] 
+
+naive_model = MultinomialNB(alpha=0.01, fit_prior=True) 
+naive_model.fit(X, y)
+```
+## Discriminant Analysis 
+Discriminant analysis works with continuous or categorical predictors, as well as with categorical outcomes.Using the covariance matrix, it calculates a linear discriminant function, which is used to distinguish records belonging to one class from those belonging to another. 
+
+This function is applied to the records to derive weights, or scores, for each record (one weight for each possible class), which determines its estimated class.
+ 
+while the text and example in this section used just two predictor variables, LDA works just as well with more than two predictor variables. The only limiting factor is the num‐ ber of records (estimating the covariance matrix requires a suffi‐ cient number of records per variable, which is typically not an issue in data science applications). There are other variants of discriminant analysis. The best known is quadratic discriminant analysis (QDA). Despite its name, QDA is still a linear discriminant function. The main difference is that in LDA, the covariance matrix is assumed to be the same for the two groups corresponding to Y = 0 and Y = 1. In QDA, the covariance matrix is allowed to be different for the two groups. In practice, theº
