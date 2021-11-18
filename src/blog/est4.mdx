@@ -47,3 +47,22 @@ Logistic regression is by far the most common form of GLM. A data scientist will
 
 ### Analysis of residuals
 Analysis of Residuals’ is a mathematical method for checking if a regression model is a ‘good fit’.
+## Evaluating Classification Models
+
+- Accuracy 
+ The percent (or proportion) of cases classified correctly. 
+- Confusion matrix
+ A tabular display (2×2 in the binary case) of the record counts by their predicted and actual classification status. 
+- Sensitivity 
+ The percent (or proportion) of all 1s that are correctly classified as 1s. 
+- Specificity 
+ The percent (or proportion) of all 0s that are correctly classified as 0s. Precision The percent (proportion) of predicted 1s that are actually 1s. 
+- ROC curve
+ A plot of sensitivity versus specificity. 
+- Lift
+ A measure of how effective the model is at identifying (comparatively rare) 1s at different probability cutoffs.
+
+### Confusion Matrix
+At the heart of classification metrics is the confusion matrix. The confusion matrix is a table showing the number of correct and incorrect predictions categorized by type of response. Several packages are available in R and Python to compute a confusion matrix, but in the binary case, it is simple to compute one by hand. 
+
+To illustrate the confusion matrix, consider the logistic_gam model that was trained on a balanced data set with an equal number of defaulted and paid-off loans (see Figure 5-4). Following the usual conventions, Y = 1 corresponds to the event of inter‐ est (e.g., default), and Y = 0 corresponds to a negative (or usual) event (e.g., paid off). The following computes the confusion matrix for the logistic_gam model applied to
